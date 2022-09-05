@@ -3,13 +3,14 @@ import react from '@vitejs/plugin-react'
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import';
 import Unocss from 'unocss/vite'
 import {presetWind} from 'unocss'
+import {resolve} from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base:'/antd-one-editor/',
   resolve:{
     alias:{
-      '@': './src'
+      '@': resolve(__dirname,'./src')
     }
   },
   plugins: [
