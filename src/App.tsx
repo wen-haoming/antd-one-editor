@@ -1,14 +1,11 @@
-import React from 'react';
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import { Button, Input, ConfigProvider, Table } from 'antd';
+import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'antd/dist/antd.compact.less'; // 引入官方提供的紧凑 less 样式入口文件
 
-import Header from './Header';
-import LeftPanel from './LeftPanel';
-import RightPanel from './RightPanel';
-import RenderPanel from './RenderPanel';
+import Header from './layout/Header';
+import LeftPanel from './layout/LeftPanel';
+import RightPanel from './layout/RightPanel';
+import RenderPanel from './layout/RenderPanel';
 
 
 function App() {
