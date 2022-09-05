@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import';
 import Unocss from 'unocss/vite'
 import {presetWind} from 'unocss'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   base:'/antd-one-editor',
@@ -15,8 +16,8 @@ export default defineConfig({
       theme:{
         colors:{
           brand:{
-            'dark':'#222325',
-            'darkContent':'#151517'
+            'primary':'#2558fb',
+            'line':'#e1e2e8'
           }
         }
       }

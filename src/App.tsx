@@ -14,7 +14,7 @@ import RenderPanel from './RenderPanel';
 function App() {
   return (
     <ConfigProvider locale={zhCN}>
-      <div className='flex flex-col text-gray-100 relative very-cool w-full	h-full bg-brand-dark-content'>
+      <div className='flex flex-col relative very-cool w-full	h-full'>
           <Header/>
           <div className='flex flex-1'>
                <LeftPanel/> 
