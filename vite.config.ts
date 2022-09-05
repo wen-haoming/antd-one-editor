@@ -5,6 +5,7 @@ import Unocss from 'unocss/vite'
 import {presetWind} from 'unocss'
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:'/antd-one-editor',
   plugins: [
     createStyleImportPlugin({ resolves: [AntdResolve()] }),
     Unocss({
