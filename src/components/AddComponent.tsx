@@ -16,13 +16,14 @@ const AddComponent: FC<AddComponentProps> = (props) => {
   const handleChange = (type: Atom['type'], props: any = {}) => () => {
     onChange({
       type: type,
-      props: props
+      props: props,
+      id: (Math.floor(Math.random()*100000)).toString(16)
     })
     setFalse();
   }
 
   return <>
-    <Modal visible={visible} onOk={setTrue} bodyStyle={{
+    <Modal open={visible} onOk={setTrue} bodyStyle={{
       borderRadius: '0.375rem',
     }} onCancel={setFalse} wrapClassName="rounded-md" className="rounded-md">
       <div className="rounded-md text-brand-sub-txt bg-white p-4 z-auto">
