@@ -1,16 +1,16 @@
-import { Button, ButtonProps } from 'antd'
+import { List, ListProps } from 'antd'
 import { FC } from 'react'
 
 
-interface AntButtonProps extends ButtonProps {
+interface AntListProps extends ListProps<any> {
 
 }
 
-const AntButton: FC<AntButtonProps> = (props) => {
+const AntList: FC<AntListProps> = (props) => {
 
   const {} = props
 
-  return <Button {...props}>{props.children}</Button>
+  return <List {...props}/>
 }
 
-export default AntButton
+export default AntList

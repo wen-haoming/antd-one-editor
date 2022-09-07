@@ -10,7 +10,7 @@ const AntButton: FC<AntButtonProps> = (props) => {
 
   const {} = props
 
-  return <Button {...props}>{props.children}</Button>
+  return <Button {...props}/>
 }
 
 export default AntButton

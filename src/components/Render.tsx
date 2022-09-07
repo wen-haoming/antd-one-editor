@@ -16,15 +16,15 @@ const Render: FC<RenderProps> = (props) => {
 
   const { schema } = props;
 
-  return <Space wrap>
+  return <>
     {
       schema.map((item, idx) => {
 
         const Component = schemaInstall[item.type]
        
-        return <Component className="s" key={idx} {...item.props} />
+        return <Component key={idx} {...item.props} />
       })
-    }</Space>
+    }</>
 }
 
 export default Render
