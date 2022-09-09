@@ -20,13 +20,13 @@ export default defineConfig({
         presetWind()
       ],
       shortcuts: {
-        'btn': 'inline-block py-1	 px-3 font-semibold rounded-md bg-brand-primary text-white cursor-pointer hover:bg-brand-hover text-center',
+        'btn': 'inline-block py-1	 px-3 font-semibold rounded bg-brand-primary text-white cursor-pointer hover:bg-brand-hover text-center',
         'compBtn': 'inline-block py-3	 px-3	text-brand-primary font-semibold rounded-md text-brand-txt  cursor-pointer hover:bg-brand-line hover:text-brand-primary text-left',
         'btn-block':'block py-1	 px-3	font-semibold rounded-md bg-brand-primary text-white cursor-pointer hover:bg-brand-hover text-center',
         // 'hover-outline':'hover:outline  hover:outline-red'
       },
       rules:[
-        ['hhh',{
+        ['editor-hover',{
           outline:'1.5px dotted #2558fb',
           // 'outline-width': "1px",
           //   'outline-style':'dotted',

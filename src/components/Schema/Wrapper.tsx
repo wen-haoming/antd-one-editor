@@ -13,7 +13,7 @@ const Wrapper: FC<WrapperProps> = (props) => {
     console.log(componentId);
   },[componentId])
 
-  return <div onClick={handleClick} className="hover:hhh" style={{ display: block ? 'block' : 'inline-block' }}  >
+  return <div onClick={handleClick} className="hover:editor-hover" style={{ display: block ? 'block' : 'inline-block' }}  >
     {props.children}
   </div>
 }
