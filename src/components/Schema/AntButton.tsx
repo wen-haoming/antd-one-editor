@@ -1,8 +1,9 @@
-import { PropsArray } from '@/utils/propsTramsform';
-import { Button, ButtonProps } from 'antd';
-import { FC } from 'react';
+import type { PropsArray } from '@/utils/propsTramsform';
+import type { ButtonProps } from 'antd';
+import { Button } from 'antd';
+import type { FC } from 'react';
 
-interface AntButtonProps extends ButtonProps {}
+type AntButtonProps = ButtonProps
 
 const AntButton: FC<AntButtonProps> = (props) => {
   const {} = props;

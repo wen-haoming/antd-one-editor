@@ -1,7 +1,8 @@
-import { Result, ResultProps } from 'antd';
-import { FC } from 'react';
+import type { ResultProps } from 'antd';
+import { Result } from 'antd';
+import type { FC } from 'react';
 
-interface AntResultProps extends ResultProps {}
+type AntResultProps = ResultProps
 
 const AntResult: FC<AntResultProps> = (props) => {
   const {} = props;

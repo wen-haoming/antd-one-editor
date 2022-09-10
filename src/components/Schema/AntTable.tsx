@@ -1,7 +1,8 @@
-import { Table, TableProps } from 'antd';
-import { FC } from 'react';
+import type { TableProps } from 'antd';
+import { Table } from 'antd';
+import type { FC } from 'react';
 
-interface AntTableProps extends TableProps<any> {}
+type AntTableProps = TableProps<any>
 
 const AntTable: FC<AntTableProps> = (props) => {
   const {} = props;

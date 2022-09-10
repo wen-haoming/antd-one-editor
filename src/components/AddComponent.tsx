@@ -1,7 +1,8 @@
 import { Modal, Button, Descriptions } from 'antd';
-import { FC, memo } from 'react';
+import type { FC} from 'react';
+import { memo } from 'react';
 import { useBoolean } from 'ahooks';
-import { Atom } from '@/components/Render';
+import type { Atom } from '@/components/Render';
 
 interface AddComponentProps {
   onChange: (atom: Atom) => void;

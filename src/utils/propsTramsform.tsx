@@ -1,5 +1,5 @@
 import FormRender from '@/components/FormRender';
-import { Field } from '@/components/FormRender/types';
+import type { Field } from '@/components/FormRender/types';
 
 export type PropsArray = Field[];
 

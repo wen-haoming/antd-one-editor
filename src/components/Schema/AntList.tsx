@@ -1,7 +1,8 @@
-import { List, ListProps } from 'antd';
-import { FC } from 'react';
+import type { ListProps } from 'antd';
+import { List } from 'antd';
+import type { FC } from 'react';
 
-interface AntListProps extends ListProps<any> {}
+type AntListProps = ListProps<any>
 
 const AntList: FC<AntListProps> = (props) => {
   const {} = props;

@@ -1,7 +1,8 @@
-import { PageHeader, PageHeaderProps } from 'antd';
-import { FC } from 'react';
+import type { PageHeaderProps } from 'antd';
+import { PageHeader } from 'antd';
+import type { FC } from 'react';
 
-interface AntPageHeaderProps extends PageHeaderProps {}
+type AntPageHeaderProps = PageHeaderProps
 
 const AntPageHeader: FC<AntPageHeaderProps> = (props) => {
   const {} = props;
