@@ -1,8 +1,7 @@
 import type { FC } from 'react';
-import { cloneElement } from 'react';
 import { schemaInstall } from './Schema';
-import { ConfigProvider, Space } from 'antd';
 import Wrapper from './Schema/Wrapper';
+
 export interface Atom {
   type: keyof typeof schemaInstall;
   id: string;
@@ -15,7 +14,6 @@ export interface RenderProps {
 
 const Render: FC<RenderProps> = (props) => {
   const { schema } = props;
-
   return (
     <>
       {schema.map((item, idx) => {
@@ -25,7 +23,8 @@ const Render: FC<RenderProps> = (props) => {
             key={idx}
             componentId={item.id}
             block={item.type !== 'AntButton' && item.type !== 'AntInput'}
-          >
+            schemaConfig={Component.schemaConfig || []}
+            >
             <Component {...item.props} />
           </Wrapper>
         );

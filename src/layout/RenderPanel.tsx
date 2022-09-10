@@ -1,10 +1,10 @@
 import AddComponent from '@/components/AddComponent';
-import type { RenderProps } from '@/components/Render';
 import Render from '@/components/Render';
-import { useState } from 'react';
+import { schema } from '@/store';
+import { useRecoilState } from 'recoil';
 
 const RightPanel = () => {
-  const [schema, setSchema] = useState<RenderProps['schema']>([]);
+  const [schemaState,setSchemaState] = useRecoilState(schema);
 
   return (
     <div className="flex-1 bg-brand-grey p-t-0">
@@ -16,11 +16,13 @@ const RightPanel = () => {
           <span className="i-material-symbols-code-blocks-outline inline-block text-size-xl " />
         </span>
       </div>
-      <div className="bg-white h-full overflow-y-auto m-2">
-        <Render schema={schema} />
+      <div className="bg-white h-full overflow-y-auto m-2 p-1">
+        <div>
+          <Render schema={schemaState} />
+        </div>
         <AddComponent
           onChange={(atom) => {
-            setSchema((previos) => {
+            setSchemaState((previos) => {
               return [...previos, atom];
             });
           }}

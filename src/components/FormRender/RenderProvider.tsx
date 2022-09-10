@@ -9,6 +9,7 @@ import Render from './components/Render';
 import { innerConfig } from './components';
 
 export { useForm } from './useForm';
+
 interface ItemRenderProps {
   fields: FRField;
   form: FormInstance;

@@ -77,12 +77,7 @@ const FormRender: FC<FRProps> = (props) => {
   const innerFields = useMemo(() => {
     return fields;
   }, [
-    JSON.stringify(fields, (_key, value) => {
-      if (typeof value === 'object' || typeof value === 'function') {
-        return '';
-      }
-      return value;
-    }),
+    JSON.stringify(fields),
   ]);
 
   return (
