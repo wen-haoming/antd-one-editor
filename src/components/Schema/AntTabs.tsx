@@ -1,16 +1,12 @@
-import { Tabs, TabsProps } from 'antd'
-import { FC } from 'react'
+import { Tabs, TabsProps } from 'antd';
+import { FC } from 'react';
 
-
-interface AntTabsProps extends TabsProps {
-
-}
+interface AntTabsProps extends TabsProps {}
 
 const AntTabs: FC<AntTabsProps> = (props) => {
+  const {} = props;
 
-  const {} = props
+  return <Tabs {...props}>{props.children}</Tabs>;
+};
 
-  return <Tabs {...props}>{props.children}</Tabs>
-}
-
-export default AntTabs
+export default AntTabs;

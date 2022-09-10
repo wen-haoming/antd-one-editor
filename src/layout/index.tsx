@@ -4,14 +4,16 @@ import RenderPanel from './RenderPanel';
 import RightPanel from './RightPanel';
 
 const Layout = () => {
-  return <div className='flex flex-col relative very-cool w-full	h-full'>
-    <Header />
-    <div className='flex flex-1'>
-      <LeftPanel />
-      <RenderPanel />
-      <RightPanel />
+  return (
+    <div className="flex flex-col relative very-cool w-full	h-full">
+      <Header />
+      <div className="flex flex-1">
+        <LeftPanel />
+        <RenderPanel />
+        <RightPanel />
+      </div>
     </div>
-  </div>
-}
+  );
+};
 
-export default Layout
+export default Layout;

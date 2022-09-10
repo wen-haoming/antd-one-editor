@@ -6,5 +6,5 @@ export type InputPasswrodProps = InputProps;
 
 export const InputPasswrod: FC<InputPasswrodProps> = (props) => {
   const { allowClear = true } = props;
-  return <Input.Password  allowClear={allowClear} {...props} />;
+  return <Input.Password allowClear={allowClear} {...props} />;
 };

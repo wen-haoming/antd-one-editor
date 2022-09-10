@@ -1,16 +1,12 @@
-import { Result, ResultProps } from 'antd'
-import { FC } from 'react'
+import { Result, ResultProps } from 'antd';
+import { FC } from 'react';
 
-
-interface AntResultProps extends ResultProps {
-
-}
+interface AntResultProps extends ResultProps {}
 
 const AntResult: FC<AntResultProps> = (props) => {
+  const {} = props;
 
-  const {} = props
+  return <Result {...props} />;
+};
 
-  return <Result {...props}/>
-}
-
-export default AntResult
+export default AntResult;

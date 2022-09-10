@@ -1,16 +1,12 @@
-import { Input, InputProps } from 'antd'
-import { FC } from 'react'
+import { Input, InputProps } from 'antd';
+import { FC } from 'react';
 
-
-interface AntInputProps extends InputProps {
-
-}
+interface AntInputProps extends InputProps {}
 
 const AntInput: FC<AntInputProps> = (props) => {
+  const {} = props;
 
-  const {} = props
+  return <Input {...props} />;
+};
 
-  return <Input {...props} />
-}
-
-export default AntInput
+export default AntInput;

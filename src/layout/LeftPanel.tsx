@@ -1,6 +1,5 @@
-const LeftPanel = ()=>{
+const LeftPanel = () => {
+  return <div className="w-auto    border-brand-line">LeftPanelLeftPanel</div>;
+};
 
-  return <div className="w-auto    border-brand-line">LeftPanelLeftPanel</div>
-}
-
-export default LeftPanel
+export default LeftPanel;

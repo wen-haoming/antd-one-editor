@@ -8,7 +8,7 @@ function App() {
     <ConfigProvider locale={zhCN}>
       <Layout />
     </ConfigProvider>
-  )
+  );
 }
 
-export default App
+export default App;

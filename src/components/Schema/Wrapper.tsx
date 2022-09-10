@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import type { FC } from 'react'
+import type { FC } from 'react';
 
 interface WrapperProps {
   block?: boolean;
@@ -11,11 +11,17 @@ const Wrapper: FC<WrapperProps> = (props) => {
 
   const handleClick = useCallback(() => {
     console.log(componentId);
-  }, [componentId])
+  }, [componentId]);
 
-  return <div onClick={handleClick} className="hover:editor-hover" style={{ display: block ? 'block' : 'inline-block' }}  >
-    {props.children}
-  </div>
-}
+  return (
+    <div
+      onClick={handleClick}
+      className="hover:editor-hover"
+      style={{ display: block ? 'block' : 'inline-block' }}
+    >
+      {props.children}
+    </div>
+  );
+};
 
-export default Wrapper
+export default Wrapper;

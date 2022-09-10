@@ -10,7 +10,7 @@ export default (props: any) => {
         padding: '40px 0px',
       }}
     >
-      <Card style={{width:400}}>{props.children}</Card>
+      <Card style={{ width: 400 }}>{props.children}</Card>
     </div>
   );
 };

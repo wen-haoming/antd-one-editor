@@ -9,23 +9,26 @@ const Demo4 = () => {
         labelAlign="left"
         fields={[
           {
-            type: "FormSelect",
+            type: 'FormSelect',
             props: {
               label: '下一项输入框必选',
-              name: "required",
+              name: 'required',
               labelCol: {
-                span: 6
+                span: 6,
               },
               fieldProps: {
-                options: [{
-                  value: true,
-                  label: '必选',
-                }, {
-                  value: false,
-                  label: '非必选'
-                }]
-              }
-            }
+                options: [
+                  {
+                    value: true,
+                    label: '必选',
+                  },
+                  {
+                    value: false,
+                    label: '非必选',
+                  },
+                ],
+              },
+            },
           },
           (formData) => ({
             type: 'FormInput',
@@ -34,10 +37,10 @@ const Demo4 = () => {
               label: '输入框',
               name: 'input',
               labelCol: {
-                span: 6
-              }
-            }
-          })
+                span: 6,
+              },
+            },
+          }),
         ]}
       />
     </FormWrap>

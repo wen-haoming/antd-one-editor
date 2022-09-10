@@ -1,0 +1,7 @@
+/lambda/
+/scripts
+/config
+.history
+dist
+node_modules
+.gitignore

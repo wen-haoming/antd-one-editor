@@ -10,7 +10,6 @@ import type { ItemCeilProps } from './components/ItemCeil';
 import type { SubmitProps } from './components/Submit';
 import type { Rule } from 'antd/es/form';
 
-
 export type Field = {
   // 如果指定了改条件那么就会有对应
   type?: keyof typeof innerConfig | React.FunctionComponent | React.ClassicComponent;
@@ -22,7 +21,7 @@ export type Field = {
           Exclude<FormSelectProps, 'options'> &
           Exclude<FormInputProps, 'options'> &
           Exclude<FormRadioGroupProps, 'options'> &
-          ItemCeilProps['fieldProps'] & 
+          ItemCeilProps['fieldProps'] &
           SubmitProps
       >,
       'options'

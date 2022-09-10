@@ -14,7 +14,7 @@ import { RenderTabs } from './TabPanel';
 import { Item } from './Item';
 import { Submit } from './Submit';
 import { Reset } from './Reset';
-import {InputPasswrod} from './InputPasswrod'
+import { InputPasswrod } from './InputPasswrod';
 
 export const innerConfig = {
   FormInput,
@@ -25,5 +25,5 @@ export const innerConfig = {
   Item,
   Submit,
   Reset,
-  InputPasswrod
+  InputPasswrod,
 };

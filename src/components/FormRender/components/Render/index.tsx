@@ -9,10 +9,9 @@ import { FormRenderContext } from '../../RenderProvider';
 import { formatItemProps } from '../../rules';
 import { CustomerRender } from './CustomerRender';
 
-
 interface RProps {
   renderProps: Field | FieldFunc; // form 的渲染实例，既可以是对象，也可以是函数
-  colProps: ColProps  // col 的栅格属性，控制列数
+  colProps: ColProps; // col 的栅格属性，控制列数
 }
 
 export const FormRender: FC<RProps> = (FormRenderProps) => {
@@ -63,12 +62,7 @@ export const FormRender: FC<RProps> = (FormRenderProps) => {
             type,
           }: Field = formatItemProps(renderProps(proxy, FRContext?.formDataOptions?.options, form));
           return (
-            <CustomerRender
-              render={Render}
-              type={type}
-              props={props}
-              col={col ? col : colProps}
-            />
+            <CustomerRender render={Render} type={type} props={props} col={col ? col : colProps} />
           );
         }}
       </Form.Item>
@@ -76,14 +70,7 @@ export const FormRender: FC<RProps> = (FormRenderProps) => {
   } else {
     const { type, props = {}, render, col } = formatItemProps(renderProps as Field);
 
-    return (
-      <CustomerRender
-        render={render}
-        type={type}
-        props={props}
-        col={col ? col : colProps}
-      />
-    );
+    return <CustomerRender render={render} type={type} props={props} col={col ? col : colProps} />;
   }
 };
 

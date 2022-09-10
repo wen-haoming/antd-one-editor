@@ -8,7 +8,7 @@ export type FormSelectProps = SelectProps<any> & {
 };
 
 export const FormSelect: FC<FormSelectProps> = (props) => {
-  const { allowClear = true, valueEnum, options,...reset } = props;
+  const { allowClear = true, valueEnum, options, ...reset } = props;
 
   const innerOptions = useMemo(() => {
     if (options) {

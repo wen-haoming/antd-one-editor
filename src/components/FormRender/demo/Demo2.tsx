@@ -33,71 +33,83 @@ const Demo = (props: any) => {
                         tab: '账号密码登录',
                         key: 'a',
                         fields: [
-                          [{
-                            type: 'FormInput',
-                            required: true,
-                            props: {
-                              name: 'username',
-                              label: '账号',
-                              fieldProps: {
-                                prefix: <UserOutlined />,
+                          [
+                            {
+                              type: 'FormInput',
+                              required: true,
+                              props: {
+                                name: 'username',
+                                label: '账号',
+                                fieldProps: {
+                                  prefix: <UserOutlined />,
+                                },
                               },
                             },
-                          }],
-                          [{
-                            type: 'InputPasswrod',
-                            required: true,
-                            props: {
-                              name: 'paaword',
-                              label: '密码',
-                              fieldProps: {
-                                prefix: <LockOutlined />,
+                          ],
+                          [
+                            {
+                              type: 'InputPasswrod',
+                              required: true,
+                              props: {
+                                name: 'paaword',
+                                label: '密码',
+                                fieldProps: {
+                                  prefix: <LockOutlined />,
+                                },
                               },
                             },
-                          }],
-                          [{
-                            type: 'Submit',
-                            props: {
-                              fieldProps: {
-                                block: true,
-                                text: '登录',
+                          ],
+                          [
+                            {
+                              type: 'Submit',
+                              props: {
+                                fieldProps: {
+                                  block: true,
+                                  text: '登录',
+                                },
                               },
                             },
-                          }],
+                          ],
                         ],
                       },
                       {
                         tab: '手机登录',
                         key: 'b',
                         fields: [
-                          [{
-                            type: 'FormInput',
-                            required: true,
-                            props: {
-                              name: 'username2',
-                              label: '手机号',
-                              fieldProps: {
-                                // prefix: <PhoneOutlined />,
+                          [
+                            {
+                              type: 'FormInput',
+                              required: true,
+                              props: {
+                                name: 'username2',
+                                label: '手机号',
+                                fieldProps: {
+                                  // prefix: <PhoneOutlined />,
+                                },
                               },
                             },
-                          }],
-                          [{
-                            type: 'InputPasswrod',
-                            required: true,
-                            props: {
-                              name: 'paaword2',
-                              label: '验证码',
-                            },
-                          }],
-                          [{
-                            type: 'Submit',
-                            props: {
-                              fieldProps: {
-                                block: true,
-                                text: '登录',
+                          ],
+                          [
+                            {
+                              type: 'InputPasswrod',
+                              required: true,
+                              props: {
+                                name: 'paaword2',
+                                label: '验证码',
                               },
                             },
-                          }],
+                          ],
+                          [
+                            {
+                              type: 'Submit',
+                              props: {
+                                fieldProps: {
+                                  block: true,
+                                  text: '登录',
+                                },
+                              },
+                            },
+                          ],
                         ],
                       },
                     ],

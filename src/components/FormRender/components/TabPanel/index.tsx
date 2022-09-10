@@ -35,7 +35,7 @@ type InnerTabsProps = {
     fields: FRField;
   }[];
   value?: string | number;
-  colProps?: ColProps
+  colProps?: ColProps;
 } & TabsProps;
 
 const InnerTabs: FC<InnerTabsProps> = (props) => {
@@ -51,9 +51,13 @@ const InnerTabs: FC<InnerTabsProps> = (props) => {
                 return field.map((field2, idx3) => {
                   return (
                     <FormRender
-                      colProps={colProps ? colProps : {
-                        span: splitCol(field.length)
-                      }}
+                      colProps={
+                        colProps
+                          ? colProps
+                          : {
+                              span: splitCol(field.length),
+                            }
+                      }
                       key={`${idx.toString()}-${idx2.toString()}-${idx3.toString()}`}
                       renderProps={field2}
                     />
@@ -61,9 +65,17 @@ const InnerTabs: FC<InnerTabsProps> = (props) => {
                 });
               }
               return (
-                <FormRender colProps={colProps ? colProps : {
-                  span: splitCol(tab.fields.length)
-                }} key={`${idx.toString()}-${idx2.toString()}`} renderProps={field} />
+                <FormRender
+                  colProps={
+                    colProps
+                      ? colProps
+                      : {
+                          span: splitCol(tab.fields.length),
+                        }
+                  }
+                  key={`${idx.toString()}-${idx2.toString()}`}
+                  renderProps={field}
+                />
               );
             })}
           </TabPane>
@@ -74,9 +86,7 @@ const InnerTabs: FC<InnerTabsProps> = (props) => {
 };
 
 export const RenderTabs: FC<InnerTabsProps> = (props) => {
-  return (
-      <InnerTabs {...props} />
-  );
+  return <InnerTabs {...props} />;
 };
 
 export default RenderTabs;

@@ -29,7 +29,7 @@ export const Item: FC<{
     }
   };
 
-  if(!Comp) return null
+  if (!Comp) return null;
 
   return (
     <Form.Item label={label} name={name} {...restItemProps}>

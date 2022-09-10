@@ -8,5 +8,5 @@ export interface ResetProps extends SubmitProps {
 }
 
 export const Reset: FC<ResetProps> = (props) => {
-  return <Submit text="重置" type="default" htmlType="reset"  {...props} />;
+  return <Submit text="重置" type="default" htmlType="reset" {...props} />;
 };
