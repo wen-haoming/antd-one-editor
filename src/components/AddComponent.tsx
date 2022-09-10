@@ -132,7 +132,9 @@ const AddComponent: FC<AddComponentProps> = (props) => {
         </div>
       </div>
     </Modal>
-    <div className="btn-block my-1" onClick={setTrue}>+</div>
+    <div className="btn-block mx-10 my-2 " onClick={setTrue}>
+      +
+    </div>
   </>
 
 }
