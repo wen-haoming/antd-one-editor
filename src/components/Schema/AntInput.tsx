@@ -23,11 +23,12 @@ const AntInputConfig: PropsConfigArray = [
   },
   {
     valueType: 'FormSelect',
-    label: '是否边框',
-    name: 'bordered',
+    label: '大小',
+    name: 'size',
     valueEnum: {
-      true: '是',
-      false: '否',
+      large: '大',
+      middle: '中',
+      small: '小',
     },
   },
 ];

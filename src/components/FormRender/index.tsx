@@ -38,7 +38,7 @@ const FormRender: FC<FRProps> = (props) => {
   } = props;
   const [formInstance] = Form.useForm(form);
 
-  const onValuesChange = useMemo(() => valuesChange2, []);
+  const onValuesChange = valuesChange2
 
   const formContextValue = useMemo(
     () => ({
@@ -57,16 +57,13 @@ const FormRender: FC<FRProps> = (props) => {
     };
   }, [install]);
 
-  const valuesChange: FormProps['onValuesChange'] = useCallback(
-    (changedValues: Record<string, any>) => {
+  const valuesChange: FormProps['onValuesChange'] = (changedValues: Record<string, any>) => {
       if (onValuesChange) {
         Promise.resolve().then(() =>
           onValuesChange(changedValues, formInstance.getFieldsValue(), form?.formDataOpts),
         );
       }
-    },
-    [],
-  );
+    }
 
   const finish: FormProps['onFinish'] = (values) => {
     if (onFinish) {

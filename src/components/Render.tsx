@@ -5,7 +5,7 @@ import Wrapper from './Schema/Wrapper';
 export interface Atom {
   type: keyof typeof schemaInstall;
   id: string;
-  props: {};
+  props: Record<string, any>;
 }
 
 export interface RenderProps {
@@ -24,7 +24,7 @@ const Render: FC<RenderProps> = (props) => {
             componentId={item.id}
             block={item.type !== 'AntButton' && item.type !== 'AntInput'}
             schemaConfig={Component.schemaConfig || []}
-            >
+          >
             <Component {...item.props} />
           </Wrapper>
         );
