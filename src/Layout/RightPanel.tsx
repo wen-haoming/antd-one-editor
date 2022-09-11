@@ -20,7 +20,7 @@ const RightPanel = () => {
     }
   }, [currentSelectState.id]);
 
-  const onValuesChange = useCallback((_: any, formValues: any) => {
+  const onValuesChange = (_: any, formValues: any) => {
     const newSchemaState = schemaState.map((item) => {
       if (item.id === currentSelectState.id && item.props) {
         return {
@@ -34,9 +34,7 @@ const RightPanel = () => {
       return item;
     });
     setSchemaState(newSchemaState);
-  }, []);
-
-  console.log(currentSelectState.propsConfigArray);
+  };
   
 
   return (
