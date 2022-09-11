@@ -3,11 +3,12 @@ import Render from '@/components/Render';
 import { schema } from '@/store';
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
+import type { Atom } from '@/components/Render';
 
 const RenderPanel = () => {
   const [schemaState,setSchemaState] = useRecoilState(schema);
 
-  const handleAdd = useCallback((atom) => {
+  const handleAdd = useCallback((atom: Atom) => {
     setSchemaState((previos) => {
       return [...previos, atom];
     });

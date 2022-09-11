@@ -5,13 +5,14 @@ import type { FC } from 'react';
 
 type AntButtonProps = ButtonProps;
 
-const AntButton: FC<AntButtonProps> & { propsConfigArray: PropsConfigArray } = (props) => {
+const AntButton: (FC<AntButtonProps> & { propsConfigArray: PropsConfigArray }) = (props) => {
   const {} = props;
 
   return <Button {...props} />;
 };
 
-export const AntButtonConfig: PropsConfigArray = [
+
+AntButton.propsConfigArray = [
   {
     valueType: 'FormInput',
     label: '文字',
@@ -42,8 +43,6 @@ export const AntButtonConfig: PropsConfigArray = [
       round: '椭圆',
     },
   },
-];
-
-AntButton.propsConfigArray = AntButtonConfig;
+];;
 
 export default AntButton;

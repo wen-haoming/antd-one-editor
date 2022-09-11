@@ -11,7 +11,8 @@ const AntInput: FC<AntInputProps> & { propsConfigArray: PropsConfigArray } = (pr
   return <Input {...props} />;
 };
 
-const AntInputConfig: PropsConfigArray = [
+
+AntInput.propsConfigArray = [
   {
     valueType: 'FormSwitch',
     label: '是否展示字数',
@@ -27,8 +28,6 @@ const AntInputConfig: PropsConfigArray = [
       small: '小',
     },
   },
-];
-
-AntInput.propsConfigArray = AntInputConfig;
+];;
 
 export default AntInput;

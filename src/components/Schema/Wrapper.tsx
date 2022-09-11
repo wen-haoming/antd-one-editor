@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { currentSelect } from '@/store';
 import { useRecoilState } from 'recoil';
 import type { PropsConfigArray } from '@/utils/propsTramsform';
+
 interface WrapperProps {
+  children: ReactNode;
   block?: boolean;
   componentId: string;
   propsConfigArray: PropsConfigArray;
@@ -28,7 +30,7 @@ const Wrapper: FC<WrapperProps> = (props) => {
       }`}
       style={{ display: block ? 'block' : 'inline-block' }}
     >
-      {props.children}
+      {props?.children}
     </div>
   );
 };

@@ -17,13 +17,13 @@ const Render: FC<RenderProps> = (props) => {
   return (
     <>
       {schema.map((item, idx) => {
-        const Component = schemaInstall[item.type];
+        const Component = schemaInstall[item.type] as any;
         return (
           <Wrapper
             key={idx}
             componentId={item.id}
             block={item.type !== 'AntButton' && item.type !== 'AntInput'}
-            propsConfigArray={Component.propsConfigArray || []}
+            propsConfigArray={Component?.schemaConfig || []}
           >
             <Component {...item.props} />
           </Wrapper>

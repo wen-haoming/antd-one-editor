@@ -20,7 +20,7 @@ const RightPanel = () => {
     }
   }, [currentSelectState.id]);
 
-  const onValuesChange = useCallback((_, formValues: any) => {
+  const onValuesChange = useCallback((_: any, formValues: any) => {
     const newSchemaState = schemaState.map((item) => {
       if (item.id === currentSelectState.id && item.props) {
         return {
