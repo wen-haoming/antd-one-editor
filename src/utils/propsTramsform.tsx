@@ -17,7 +17,6 @@ export const propsTramsform = (propsArray: PropsConfigArray) => {
         label: item.label,
       },
     };
-
     if (item.valueEnum && field.props) {
       field.props.fieldProps = {
         valueEnum: item.valueEnum,
