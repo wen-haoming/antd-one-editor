@@ -1,10 +1,17 @@
 import AddComponent from '@/components/AddComponent';
 import Render from '@/components/Render';
 import { schema } from '@/store';
+import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 
-const RightPanel = () => {
+const RenderPanel = () => {
   const [schemaState,setSchemaState] = useRecoilState(schema);
+
+  const handleAdd = useCallback((atom) => {
+    setSchemaState((previos) => {
+      return [...previos, atom];
+    });
+  },[])
 
   return (
     <div className="flex-1 bg-brand-grey p-t-0">
@@ -21,15 +28,11 @@ const RightPanel = () => {
           <Render schema={schemaState} />
         </div>
         <AddComponent
-          onChange={(atom) => {
-            setSchemaState((previos) => {
-              return [...previos, atom];
-            });
-          }}
+          onChange={handleAdd}
         />
       </div>
     </div>
   );
 };
 
-export default RightPanel;
+export default RenderPanel;

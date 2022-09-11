@@ -23,7 +23,7 @@ const Render: FC<RenderProps> = (props) => {
             key={idx}
             componentId={item.id}
             block={item.type !== 'AntButton' && item.type !== 'AntInput'}
-            schemaConfig={Component.schemaConfig || []}
+            propsConfigArray={Component.propsConfigArray || []}
           >
             <Component {...item.props} />
           </Wrapper>

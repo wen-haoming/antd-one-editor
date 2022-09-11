@@ -20,6 +20,10 @@ export const CustomerRender: FC<CustomerRenderProps> = (CustomerRenderProps) => 
   //  匹配对应的组件
   const Comp: any = typeof type === 'string' ? FRContext.install[type] || innerConfig[type] : type;
 
+  if(type === 'FormSwitch'){
+    itemProps.valuePropName = 'checked'
+  }
+
   const compProps: {
     itemProps: Record<string, any>;
     fieldProps: Record<string, any>;

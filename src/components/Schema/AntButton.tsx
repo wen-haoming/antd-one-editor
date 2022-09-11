@@ -5,7 +5,7 @@ import type { FC } from 'react';
 
 type AntButtonProps = ButtonProps;
 
-const AntButton: FC<AntButtonProps> & { schemaConfig: PropsConfigArray } = (props) => {
+const AntButton: FC<AntButtonProps> & { propsConfigArray: PropsConfigArray } = (props) => {
   const {} = props;
 
   return <Button {...props} />;
@@ -44,6 +44,6 @@ export const AntButtonConfig: PropsConfigArray = [
   },
 ];
 
-AntButton.schemaConfig = AntButtonConfig;
+AntButton.propsConfigArray = AntButtonConfig;
 
 export default AntButton;

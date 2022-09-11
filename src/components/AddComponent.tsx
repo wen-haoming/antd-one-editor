@@ -23,6 +23,7 @@ const AddComponent: FC<AddComponentProps> = (props) => {
       setFalse();
     };
 
+
   return (
     <>
       <Modal
@@ -54,7 +55,6 @@ const AddComponent: FC<AddComponentProps> = (props) => {
               className="compBtn"
               onClick={handleChange('AntPageHeader', {
                 ghost: false,
-                onBack: () => window.history.back(),
                 title: 'Title',
                 subTitle: 'This is a subtitle',
                 extra: [

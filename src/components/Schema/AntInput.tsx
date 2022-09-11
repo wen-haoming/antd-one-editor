@@ -5,7 +5,7 @@ import type { FC } from 'react';
 
 type AntInputProps = InputProps;
 
-const AntInput: FC<AntInputProps> & { schemaConfig: PropsConfigArray } = (props) => {
+const AntInput: FC<AntInputProps> & { propsConfigArray: PropsConfigArray } = (props) => {
   const {} = props;
 
   return <Input {...props} />;
@@ -13,13 +13,9 @@ const AntInput: FC<AntInputProps> & { schemaConfig: PropsConfigArray } = (props)
 
 const AntInputConfig: PropsConfigArray = [
   {
-    valueType: 'FormSelect',
+    valueType: 'FormSwitch',
     label: '是否展示字数',
     name: 'showCount',
-    valueEnum: {
-      true: '是',
-      false: '否',
-    },
   },
   {
     valueType: 'FormSelect',
@@ -33,6 +29,6 @@ const AntInputConfig: PropsConfigArray = [
   },
 ];
 
-AntInput.schemaConfig = AntInputConfig;
+AntInput.propsConfigArray = AntInputConfig;
 
 export default AntInput;

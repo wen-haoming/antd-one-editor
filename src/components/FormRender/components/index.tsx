@@ -15,6 +15,7 @@ import { Item } from './Item';
 import { Submit } from './Submit';
 import { Reset } from './Reset';
 import { InputPasswrod } from './InputPasswrod';
+import { FormSwitch } from './switch';
 
 export const innerConfig = {
   FormInput,
@@ -26,4 +27,5 @@ export const innerConfig = {
   Submit,
   Reset,
   InputPasswrod,
+  FormSwitch
 };

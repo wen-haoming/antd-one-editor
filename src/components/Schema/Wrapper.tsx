@@ -6,19 +6,19 @@ import type { PropsConfigArray } from '@/utils/propsTramsform';
 interface WrapperProps {
   block?: boolean;
   componentId: string;
-  schemaConfig: PropsConfigArray;
+  propsConfigArray: PropsConfigArray;
 }
 
 const Wrapper: FC<WrapperProps> = (props) => {
-  const { block = true, componentId, schemaConfig } = props;
+  const { block = true, componentId, propsConfigArray } = props;
   const [currentSelectState, setCurrentSelectState] = useRecoilState(currentSelect);
 
   const handleClick = useCallback(() => {
     setCurrentSelectState({
       id: componentId,
-      schemaConfig,
+      propsConfigArray,
     });
-  }, [componentId, schemaConfig]);
+  }, [componentId, propsConfigArray]);
 
   return (
     <div

@@ -1,7 +1,7 @@
 import FormRender, { useForm } from '@/components/FormRender';
 import { currentSelect, schema } from '@/store';
 import { propsTramsform } from '@/utils/propsTramsform';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 const RightPanel = () => {
@@ -15,10 +15,26 @@ const RightPanel = () => {
       if (targetItem) {
         form.setFieldsValue(targetItem.props);
       }
-    }else{
-      form.setFieldsValue({})
+    } else {
+      form.resetFields();
     }
   }, [currentSelectState.id]);
+
+  const onValuesChange = useCallback((_, formValues: any) => {
+    const newSchemaState = schemaState.map((item) => {
+      if (item.id === currentSelectState.id && item.props) {
+        return {
+          ...item,
+          props: {
+            ...item.props,
+            ...formValues,
+          },
+        };
+      }
+      return item;
+    });
+    setSchemaState(newSchemaState);
+  }, []);
 
   return (
     <div className="w-1/5  border-brand-line ">
@@ -28,22 +44,8 @@ const RightPanel = () => {
       <div className="p-5">
         <FormRender
           form={form}
-          onValuesChange={(_, formValues) => {
-            const s = schemaState.map((item) => {
-              if (item.id === currentSelectState.id && item.props) {
-                return {
-                  ...item,
-                  props:{
-                    ...item.props,
-                    ...formValues,
-                  }
-                };
-              }
-              return item
-            });
-            setSchemaState(s);
-          }}
-          fields={propsTramsform(currentSelectState.schemaConfig)}
+          onValuesChange={onValuesChange}
+          fields={propsTramsform(currentSelectState.propsConfigArray)}
         />
       </div>
     </div>

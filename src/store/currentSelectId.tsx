@@ -3,11 +3,11 @@ import { atom } from 'recoil';
 
 export const currentSelect = atom<{
   id: string;
-  schemaConfig: PropsConfigArray;
+  propsConfigArray: PropsConfigArray;
 }>({
   key: 'currentSelect',
   default: {
     id: '',
-    schemaConfig: [],
+    propsConfigArray: [],
   },
 });
