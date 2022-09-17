@@ -4,8 +4,12 @@ import AntPageHeader from './AntPageHeader';
 import AntTabs from './AntTabs';
 import AntResult from './AntResult';
 import AntTable from './AntTable';
+import type { FC } from 'react';
+import type { PropsConfigArray } from '@/utils/propsTramsform';
 
-export const schemaInstall = {
+export type SFC<Props> = FC<Props> & { propsConfigArray: PropsConfigArray };
+
+export const componentsInstall = {
   AntButton,
   AntInput,
   AntPageHeader,
@@ -13,3 +17,4 @@ export const schemaInstall = {
   AntResult,
   AntTable,
 };
+

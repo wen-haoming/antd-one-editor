@@ -1,16 +1,20 @@
-import type { PropsConfigArray } from '@/utils/propsTramsform';
 import type { ButtonProps } from 'antd';
 import { Button } from 'antd';
-import type { FC } from 'react';
+
+import type { SFC } from '.';
 
 type AntButtonProps = ButtonProps;
 
-const AntButton: (FC<AntButtonProps> & { propsConfigArray: PropsConfigArray }) = (props) => {
+const AntButton: SFC<AntButtonProps>  = (props) => {
   const {} = props;
 
   return <Button {...props} />;
 };
 
+AntButton.defaultProps = {
+  children: '按钮',
+  type: 'primary',
+};
 
 AntButton.propsConfigArray = [
   {
@@ -43,6 +47,6 @@ AntButton.propsConfigArray = [
       round: '椭圆',
     },
   },
-];;
+];
 
 export default AntButton;

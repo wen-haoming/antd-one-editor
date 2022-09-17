@@ -10,4 +10,8 @@ const AntList: FC<AntListProps> = (props) => {
   return <List {...props} />;
 };
 
+AntList.defaultProps = {
+  
+}
+
 export default AntList;

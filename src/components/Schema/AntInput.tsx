@@ -1,15 +1,18 @@
-import type { PropsConfigArray } from '@/utils/propsTramsform';
 import type { InputProps } from 'antd';
 import { Input } from 'antd';
-import type { FC } from 'react';
+import type { SFC } from '.';
 
 type AntInputProps = InputProps;
 
-const AntInput: FC<AntInputProps> & { propsConfigArray: PropsConfigArray } = (props) => {
+const AntInput: SFC<AntInputProps> = (props) => {
   const {} = props;
 
   return <Input {...props} />;
 };
+
+AntInput.defaultProps = {
+  
+}
 
 
 AntInput.propsConfigArray = [

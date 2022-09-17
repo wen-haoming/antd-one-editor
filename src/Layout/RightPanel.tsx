@@ -1,41 +1,43 @@
 import FormRender, { useForm } from '@/components/FormRender';
-import { currentSelect, schema } from '@/store';
+import { currentSelect, idMap } from '@/store';
 import { propsTramsform } from '@/utils/propsTramsform';
 import { useCallback, useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { selector, useRecoilState, useRecoilValue } from 'recoil';
+
+const currentSelectMapSeletor = selector({
+  key: 'currentSelectMap',
+  get: ({ get }) => ({
+    currentMap: get(idMap)[get(currentSelect).id],
+    id: get(currentSelect).id,
+  }),
+  set: ({ set, get }, newVal) => {
+    const map = get(idMap);
+    const id = get(currentSelect).id;
+    return set(idMap, {
+      ...map,
+      [id]: {
+        ...map[id],
+        props: newVal,
+      },
+    });
+  },
+});
 
 const RightPanel = () => {
   const [form] = useForm();
-  const currentSelectState = useRecoilValue(currentSelect);
-  const [schemaState, setSchemaState] = useRecoilState(schema);
+  const [{ currentMap, id }, setCurrentMap] = useRecoilState(currentSelectMapSeletor);
 
+  // 每次切换组件就需要清空
   useEffect(() => {
-    if (currentSelectState.id) {
-      const targetItem = schemaState.find((item) => item.id === currentSelectState.id);
-      if (targetItem) {
-        form.setFieldsValue(targetItem.props);
-      }
-    } else {
+    if (currentMap && currentMap.props) {
       form.resetFields();
+      form.setFieldsValue(currentMap.props);
     }
-  }, [currentSelectState.id]);
+  }, [id]);
 
-  const onValuesChange = (_: any, formValues: any) => {
-    const newSchemaState = schemaState.map((item) => {
-      if (item.id === currentSelectState.id && item.props) {
-        return {
-          ...item,
-          props: {
-            ...item.props,
-            ...formValues,
-          },
-        };
-      }
-      return item;
-    });
-    setSchemaState(newSchemaState);
-  };
-  
+  const onValuesChange = useCallback((_: any, formValues: any) => {
+    setCurrentMap(formValues);
+  }, []);
 
   return (
     <div className="w-1/5  border-brand-line ">
@@ -43,11 +45,13 @@ const RightPanel = () => {
         {/* 属性 */}
       </div>
       <div className="p-5">
-        <FormRender
-          form={form}
-          onValuesChange={onValuesChange}
-          fields={propsTramsform(currentSelectState.propsConfigArray)}
-        />
+        {currentMap?.component?.propsConfigArray && (
+          <FormRender
+            form={form}
+            onValuesChange={onValuesChange}
+            fields={propsTramsform(currentMap.component.propsConfigArray)}
+          />
+        )}
       </div>
     </div>
   );

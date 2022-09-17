@@ -1,19 +1,11 @@
 import AddComponent from '@/components/AddComponent';
 import Render from '@/components/Render';
-import { schema } from '@/store';
-import { useCallback } from 'react';
-import { useRecoilState } from 'recoil';
-import type { Atom } from '@/components/Render';
+import { ids } from '@/store';
+import { useRecoilValue } from 'recoil';
 
 const RenderPanel = () => {
-  const [schemaState,setSchemaState] = useRecoilState(schema);
+  const idsState  = useRecoilValue(ids);
 
-  const handleAdd = useCallback((atom: Atom) => {
-    setSchemaState((previos) => {
-      return [...previos, atom];
-    });
-  },[])
-  
   return (
     <div className="flex-1 bg-brand-grey p-t-0">
       <div className="flex h-8 w-full bg-white b-brand-grey border-l-1 border-r-1 justify-end items-center p-x2">
@@ -26,11 +18,9 @@ const RenderPanel = () => {
       </div>
       <div className="bg-white h-full overflow-y-auto m-2 p-1">
         <div>
-          <Render schema={schemaState} />
+          <Render ids={idsState} />
         </div>
-        <AddComponent
-          onChange={handleAdd}
-        />
+        <AddComponent />
       </div>
     </div>
   );
