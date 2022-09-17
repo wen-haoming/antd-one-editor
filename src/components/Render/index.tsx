@@ -2,7 +2,7 @@ import { idMap } from '@/store';
 import type { FC } from 'react';
 import { useCallback } from 'react';
 import { useRecoilValue } from 'recoil';
-import  { componentsInstall } from '../Schema';
+import AddComponent from '../AddComponent';
 import Wrapper from '../Schema/Wrapper';
 
 export interface RenderProps {
@@ -39,6 +39,7 @@ const Render: FC<RenderProps> = (props) => {
           return <Render key={key} ids={id} />;
         }
       })}
+        <AddComponent />
     </>
   );
 };

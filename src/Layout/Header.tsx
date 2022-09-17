@@ -3,27 +3,30 @@ import { createCode, parse } from '@/utils/createCode';
 import { selector, useRecoilValue } from 'recoil';
 
 const s = selector({
-  key: 'createCode',
+  key: 'createCodeKey',
   get: ({ get }) => ({
-    ids: get(ids),
-    idMap: get(idMap),
+    idsState: get(ids),
+    idMapState: get(idMap),
   }),
 });
 
 const Header = () => {
-  const { ids, idMap } = useRecoilValue(s);
+  const { idsState, idMapState } = useRecoilValue(s);
 
   return (
     <>
       <div className="h-10 flex items-center px-4 justify-between border-b-1	 border-brand-grey">
         <span className="text-sm text-brand-primary font-semibold">Antd-one-editor</span>
-        <div
-          className="btn"
-          onClick={() => {
-            createCode(parse(ids, idMap), 'index.tsx');
-          }}
-        >
-          出码
+        <div className='flex items-center'>
+          <div
+            className="btn m-r1"
+            onClick={() => {
+              createCode(parse(idsState, idMapState), 'index.tsx');
+            }}
+          >
+            出码
+          </div>
+            <div className='i-mdi-github text-black text-size-2xl cursor-pointer hover:text-brand-primary ' />
         </div>
       </div>
     </>
