@@ -10,6 +10,11 @@ const AntTable: SFC<AntTableProps> = (props) => {
   return <Table {...props} />;
 };
 
+AntTable.importDeclaration = {
+  source:'antd',
+  import:'Table'
+}
+
 AntTable.defaultProps = {
   dataSource: [
     {

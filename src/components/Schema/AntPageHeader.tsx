@@ -11,6 +11,12 @@ const AntPageHeader: SFC<AntPageHeaderProps> = (props) => {
   return <PageHeader {...props} />;
 };
 
+
+AntPageHeader.importDeclaration = {
+  source:'antd',
+  import:'PageHeader'
+}
+
 AntPageHeader.defaultProps = {
   ghost: false,
   title: 'Title',

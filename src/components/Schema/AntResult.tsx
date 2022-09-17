@@ -12,6 +12,11 @@ const AntResult: SFC<AntResultProps>  = (props) => {
 };
 
 
+AntResult.importDeclaration = {
+  source:'antd',
+  import:'Result'
+}
+
 AntResult.defaultProps = {
   status: 'success',
   title: 'Successfully Purchased Cloud Server ECS!',

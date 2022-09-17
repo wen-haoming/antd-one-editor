@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { useBoolean } from 'ahooks';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { idMap, ids } from '@/store';
+import type { ComponentName} from '../Schema';
 import { componentsInstall } from '../Schema';
 
 interface AddComponentProps {}
@@ -42,7 +43,7 @@ const AddComponent: FC<AddComponentProps> = () => {
   const setIdsState = useSetRecoilState(ids);
   const [idMapState, setIdMapState] = useRecoilState(idMap);
 
-  const handleChange = (componentName: keyof typeof componentsInstall) => () => {
+  const handleChange = (componentName: ComponentName) => () => {
     const id = Math.floor(Math.random() * 100000).toString(16);
 
     setIdMapState({
@@ -53,7 +54,7 @@ const AddComponent: FC<AddComponentProps> = () => {
       },
     });
 
-    setIdsState((preIds) => {
+    setIdsState((preIds: any) => {
       return [...preIds, id];
     });
     setFalse();
@@ -76,7 +77,7 @@ const AddComponent: FC<AddComponentProps> = () => {
           <div className="p-2 grid grid-cols-3 gap-4">
             {components.normal.map((item, key) => {
               return (
-                <div className="compBtn" key={key} onClick={handleChange(item.type)}>
+                <div className="compBtn" key={key} onClick={handleChange(item.type as ComponentName)}>
                   {item.text}
                 </div>
               );

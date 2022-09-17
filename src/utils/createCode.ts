@@ -1,38 +1,44 @@
-import type { RenderProps } from "@/components/Render";
+import type { IdMap } from "@/store";
 
-function translateProps(props = {}) {
-  const res = Object.keys(props).map(key => {
-    if (props[key] !== '') {
-      return `${key}="${props[key]}"`
-    } else {
-      return `${key}`
+const getImports = (ids: any[], idMap: IdMap) => {
+    
+  const importMap = ids.filter(id => typeof id === 'string').reduce<Record<string, string | string[]>>((pre, id) => {
+    const { importDefault, import: importName, source } = idMap[id].component.importDeclaration
+    if (idMap[id] && typeof pre[source] === 'undefined') {
+      if (importDefault) {
+        pre[source] = importDefault
+      } else if (importName) {
+        pre[source] = [importName]
+      }
+    } else if (idMap[id] && pre[source]) {
+      console.log(importName,'importName');
+      if (Array.isArray(pre[source]) && importName) {
+        pre[source] = [...new Set( pre[source].concat(importName))]
+      }
     }
-  }).join(' ')
-  if (res) return ` ${res}`
-  return ''
+    return pre
+  }, {})
+  
+  return Object.entries(importMap).map(([source, importValue]) => {
+    if (Array.isArray(importValue)) {
+      return `import { ${importValue.join(', ')} } from '${source}';`
+    } else {
+      return `import ${importValue} from '${source}';`
+    }
+  }).join(`\n`)
 }
 
-function createElement(name: string) {
-  return `${name.replace('Ant', '')}`
-}
-
-export const parse = (schema: RenderProps['schema']) => {
-  const deps = [{ import: [], from: '' }];
+export const parse = (ids: string[] | string[][], idMap: IdMap) => {
 
   return `
-  ${deps.map(dep => {
-    return `import ${Array.isArray(dep.import) ? `{ ${dep.import.join(',')} }` : `${dep.import}`} from ${dep.import} `
-  }).join(`
-  `)}
+  ${getImports(ids, idMap)}
 
-  const Pages = ()=>{
+  const Pages = () => {
 
-    return ${
-      schema.map()
-    }
+    return 
   }
 
-  exort default Pages
+  export default Pages
   `
 }
 

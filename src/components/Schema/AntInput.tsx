@@ -10,11 +10,18 @@ const AntInput: SFC<AntInputProps> = (props) => {
   return <Input {...props} />;
 };
 
+// 默认属性
 AntInput.defaultProps = {
   
 }
 
+// 依赖模块
+AntInput.importDeclaration = {
+  source:'antd',
+  import:'Input'
+}
 
+// 配置属性
 AntInput.propsConfigArray = [
   {
     valueType: 'FormSwitch',

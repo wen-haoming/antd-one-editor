@@ -10,6 +10,11 @@ const AntTabs: SFC<AntTabsProps> = (props) => {
   return <Tabs {...props}>{props.children}</Tabs>;
 };
 
+AntTabs.importDeclaration = {
+  source:'antd',
+  import:'Tabs'
+}
+
 AntTabs.defaultProps = {
   items: [
     { label: '项目 1', key: 'item-1', children: '内容 1' }, // 务必填写 key

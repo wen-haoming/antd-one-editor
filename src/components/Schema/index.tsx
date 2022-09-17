@@ -7,7 +7,14 @@ import AntTable from './AntTable';
 import type { FC } from 'react';
 import type { PropsConfigArray } from '@/utils/propsTramsform';
 
-export type SFC<Props> = FC<Props> & { propsConfigArray: PropsConfigArray };
+export type SFC<Props> = FC<Props> & {
+  propsConfigArray: PropsConfigArray;
+  importDeclaration: {
+    source: string;
+    importDefault?: string;
+    import?: string;
+  };
+};
 
 export const componentsInstall = {
   AntButton,
@@ -18,3 +25,4 @@ export const componentsInstall = {
   AntTable,
 };
 
+export type ComponentName = keyof typeof componentsInstall;

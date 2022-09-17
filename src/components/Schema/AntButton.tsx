@@ -11,11 +11,19 @@ const AntButton: SFC<AntButtonProps>  = (props) => {
   return <Button {...props} />;
 };
 
+// 默认值
 AntButton.defaultProps = {
   children: '按钮',
   type: 'primary',
 };
 
+// 依赖模块
+AntButton.importDeclaration = {
+  source:'antd',
+  import:'Button'
+}
+
+// 配置属性
 AntButton.propsConfigArray = [
   {
     valueType: 'FormInput',
