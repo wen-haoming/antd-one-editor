@@ -1,5 +1,5 @@
 import CodeMirror from '@uiw/react-codemirror';
-import {tsxLanguage} from '@codemirror/lang-javascript';
+import { tsxLanguage } from '@codemirror/lang-javascript';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { idMap, ids } from '@/store';
 import { parse } from '@/utils';
