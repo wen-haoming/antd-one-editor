@@ -1,5 +1,5 @@
 import { idMap, ids } from '@/store';
-import { createCode, parse } from '@/utils/createCode';
+import { createCode, parse } from '@/utils';
 import { selector, useRecoilValue } from 'recoil';
 
 const s = selector({

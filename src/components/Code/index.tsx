@@ -1,8 +1,8 @@
 import CodeMirror from '@uiw/react-codemirror';
-import { loadLanguage } from '@uiw/codemirror-extensions-langs';
+import {tsxLanguage} from '@codemirror/lang-javascript';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { idMap, ids } from '@/store';
-import { createCode, parse } from '@/utils/createCode';
+import { parse } from '@/utils';
 import { selector, useRecoilValue } from 'recoil';
 
 const s = selector({
@@ -21,7 +21,7 @@ const Code = () => {
       value={parse(idsState, idMapState)}
       className="h-full"
       theme={dracula}
-      extensions={[loadLanguage('tsx')]}
+      extensions={[tsxLanguage]}
     />
   );
 };

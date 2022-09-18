@@ -11,13 +11,12 @@
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
-    "lint:js": "cross-env TIMING=1 eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
     "lint:style": "stylelint --fix \"src/**/*.less\" ",
     "prettier": "prettier -c --write \"**/*\""
   },
   "dependencies": {
-    "@uiw/codemirror-extensions-langs": "^4.12.3",
+    "@codemirror/lang-javascript": "^6.0.2",
     "@uiw/codemirror-theme-dracula": "^4.12.3",
     "@uiw/codemirror-themes-all": "^4.12.3",
     "@uiw/react-codemirror": "^4.12.3",
@@ -36,8 +35,6 @@
     "@unocss/preset-icons": "^0.45.18",
     "@vitejs/plugin-react": "^2.0.1",
     "autoprefixer": "^10.4.8",
-    "consola": "^2.15.3",
-    "cross-env": "^7.0.3",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^22.0.0",
     "eslint-plugin-import": "^2.25.2",
