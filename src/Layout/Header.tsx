@@ -26,7 +26,7 @@ const Header = () => {
           >
             出码
           </div>
-            <div className='i-mdi-github text-black text-size-2xl cursor-pointer hover:text-brand-primary ' />
+            <a target="_blank" rel="noopener noreferrer" href='https://github.com/wen-haoming/antd-one-editor'   className='i-mdi-github text-black text-size-2xl cursor-pointer hover:text-brand-primary'  />
         </div>
       </div>
     </>

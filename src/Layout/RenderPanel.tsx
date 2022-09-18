@@ -38,9 +38,6 @@ const RenderPanel = () => {
             </span>
           );
         })}
-        {/* <span className="hover:bg-brand-grey p-1 hover:text-brand-primary cursor-pointer f-center">
-          <span className="i-carbon-chart-relationship inline-block text-size-xl " />
-        </span> */}
       </div>
       <div className="bg-white h-full overflow-y-auto m-2 p-1">
         <div>

@@ -17,6 +17,10 @@
     "prettier": "prettier -c --write \"**/*\""
   },
   "dependencies": {
+    "@uiw/codemirror-extensions-langs": "^4.12.3",
+    "@uiw/codemirror-theme-dracula": "^4.12.3",
+    "@uiw/codemirror-themes-all": "^4.12.3",
+    "@uiw/react-codemirror": "^4.12.3",
     "ahooks": "^3.7.0",
     "antd": "^4.17.2",
     "react": "^18.2.0",
