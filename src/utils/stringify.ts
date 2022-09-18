@@ -9,6 +9,9 @@
       if (typeof val === 'undefined') {
         return 'undefined';
       }
+      if(Array.isArray(val)){
+        return `${val}`
+       }
       return val;
     }
   )

@@ -53,9 +53,11 @@ const getJsx = (ids: any[], idMap: IdMap) => {
     const ele = component.importDeclaration.importDefault || component.importDeclaration.import
     if (props.children) {
       // aa={[]} aa={{}}  aa="" aa={<Comp></Comp>} aa={()=>{}}  aa={} aa
-      return `             <${ele} ${getPropsString(props)} ></${ele}>`
+      const filterChildren  = {...props}
+     Reflect.deleteProperty(filterChildren,'children')
+      return `<${ele} ${getPropsString(filterChildren)} >${props.children}</${ele}>`
     }
-    return `             <${ele} ${getPropsString(props)} />`
+    return `<${ele} ${getPropsString(props)} />`
   }).join('\n')
 }
 
