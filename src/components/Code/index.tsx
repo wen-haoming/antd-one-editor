@@ -6,9 +6,9 @@ const Code = () => {
   const uiTreeState = useRecoilValue(uiTree);
 
   return (
-    <div>
+    <div className='overflow-auto flex-1 break-words'>
       <pre>
-        <code>{parse(uiTreeState)}</code>
+        <code className='overflow-auto flex-1 break-words'>{parse(uiTreeState)}</code>
       </pre>
     </div>
   );

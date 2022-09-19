@@ -39,8 +39,7 @@ const RenderPanel = () => {
           );
         })}
       </div>
-      <div className="bg-white h-full overflow-y-auto m-2 p-1">
-        <div>
+      <div className="flex bg-white h-full overflow-y-auto m-2 p-1 flex-col">
           {currentMode === 'render' ? (
             <Render uiTree={uiTreeState} />
           ) : currentMode === 'code' ? (
@@ -48,7 +47,6 @@ const RenderPanel = () => {
           ) : (
             ''
           )}
-        </div>
       </div>
     </div>
   );
