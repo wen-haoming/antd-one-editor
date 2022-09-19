@@ -1,17 +1,17 @@
-import type { IdMap } from "@/store"
+import type { IdMap, UiTree } from "@/store"
 import { stringify } from "./stringify"
 
 // 分析依赖
-export const getImports = (ids: any[], idMap: IdMap) => {
-  const importMap = ids.filter(id => typeof id === 'string' && idMap[id]).reduce<Record<string, string | string[]>>((pre, id) => {
-    const { importDefault, import: importName, source } = idMap[id].component.importDeclaration
-    if (idMap[id] && typeof pre[source] === 'undefined') {
+export const getImports = (uiTree: UiTree) => {
+  const importMap = uiTree.reduce<Record<string, string | string[]>>((pre, uiTreeItem) => {
+    const { importDefault, import: importName, source } = uiTreeItem.UiComponent.importDeclaration
+    if (uiTreeItem && typeof pre[source] === 'undefined') {
       if (importDefault) {
         pre[source] = importDefault
       } else if (importName) {
         pre[source] = [importName]
       }
-    } else if (idMap[id] && pre[source]) {
+    } else if (uiTreeItem && pre[source]) {
       if (Array.isArray(pre[source]) && importName) {
         pre[source] = [...new Set(pre[source].concat(importName))]
       }
@@ -29,32 +29,31 @@ export const getImports = (ids: any[], idMap: IdMap) => {
 }
 
 const getPropsString = (props: Record<string, any>) => {
-  return Object.entries(props).map(([propsKey,propsValue])=>{
-    if( typeof propsValue === 'string'){
+  return Object.entries(props).map(([propsKey, propsValue]) => {
+    if (typeof propsValue === 'string') {
       // 字符串
       return `${propsKey}='${propsValue}'`
-    }else if( typeof propsValue ==='boolean' ||  typeof propsValue ==='number'){
+    } else if (typeof propsValue === 'boolean' || typeof propsValue === 'number') {
       // 布尔值
       return `${propsKey}={${propsValue}}`
-    }else if( Array.isArray(propsValue)){
+    } else if (Array.isArray(propsValue)) {
       // 数组
       return `${propsKey}={${stringify(propsValue)}}`
-    }else if(!Array.isArray(propsValue) && typeof propsValue === 'object' ){
+    } else if (!Array.isArray(propsValue) && typeof propsValue === 'object') {
       // 对象
       return `${propsKey}={${stringify(propsValue)}}`
     }
   }).join(' ')
 }
 
-const getJsx = (ids: any[], idMap: IdMap) => {
-
-  return ids.filter(id => typeof id === 'string' && idMap[id]).map(id => {
-    const { component, props } = idMap[id]
-    const ele = component.importDeclaration.importDefault || component.importDeclaration.import
+const getJsx = (uiTree: UiTree) => {
+  return uiTree.map((uiTreeItem) => {
+    const { UiComponent, props } = uiTreeItem
+    const ele = UiComponent.importDeclaration.importDefault || UiComponent.importDeclaration.import
     if (props.children) {
       // aa={[]} aa={{}}  aa="" aa={<Comp></Comp>} aa={()=>{}}  aa={} aa
-      const filterChildren  = {...props}
-     Reflect.deleteProperty(filterChildren,'children')
+      const filterChildren = { ...props }
+      Reflect.deleteProperty(filterChildren, 'children')
       return `<${ele} ${getPropsString(filterChildren)} >${props.children}</${ele}>`
     }
     return `<${ele} ${getPropsString(props)} />`
@@ -62,14 +61,14 @@ const getJsx = (ids: any[], idMap: IdMap) => {
 }
 
 
-export const parse = (ids: string[] | string[][], idMap: IdMap) => {
+export const parse = (uiTree: UiTree) => {
 
-  return `${getImports(ids, idMap)}
+  return `${getImports(uiTree)}
 
   const Pages = () => {
 
     return <>
-        ${getJsx(ids, idMap)}
+        ${getJsx(uiTree)}
     </>
   }
 

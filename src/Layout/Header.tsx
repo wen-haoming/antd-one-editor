@@ -1,17 +1,11 @@
-import { idMap, ids } from '@/store';
+import { uiTree } from '@/store';
 import { createCode, parse } from '@/utils';
-import { selector, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
-const s = selector({
-  key: 'createCodeKey',
-  get: ({ get }) => ({
-    idsState: get(ids),
-    idMapState: get(idMap),
-  }),
-});
+
 
 const Header = () => {
-  const { idsState, idMapState } = useRecoilValue(s);
+  const uiTreeState = useRecoilValue(uiTree);
 
   return (
     <>
@@ -21,7 +15,7 @@ const Header = () => {
           <div
             className="btn m-r1"
             onClick={() => {
-              createCode(parse(idsState, idMapState), 'index.tsx');
+              createCode(parse(uiTreeState), 'index.tsx');
             }}
           >
             出码

@@ -1,4 +1,4 @@
-import { idMap } from '@/store';
+import { UiTree, uiTree } from '@/store';
 import type { FC } from 'react';
 import { useCallback } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -6,40 +6,37 @@ import AddComponent from '../AddComponent';
 import Wrapper from '../Schema/Wrapper';
 
 export interface RenderProps {
-  ids: string[] | string[][];
+  uiTree: UiTree;
 }
 
 const Render: FC<RenderProps> = (props) => {
-  const { ids } = props;
-  const idMapState = useRecoilValue(idMap);
+  const { uiTree } = props;
 
-  const Comp = useCallback(
-    (id: string) => {
-      if(!idMapState[id]){
-        console.error(`id：${id}未找到对应的组件！`)
-          return <></>
-      }
-      const RenderComponent = idMapState[id].component;
-      const RenderComponentProps = idMapState[id].props;
-      return <RenderComponent {...RenderComponentProps} />;
-    },
-    [idMapState],
-  );
+  // const Comp = useCallback(
+  //   (id: string) => {
+  //     const RenderComponent = uiTree[id].component;
+  //     const RenderComponentProps = uiTree[id].props;
+  //     return <RenderComponent {...RenderComponentProps} />;
+  //   },
+  //   [uiTree],
+  // );
 
   return (
     <>
-      {ids.map((id, key) => {
-        if (typeof id === 'string') {
+      {uiTree.map(({id,UiComponent,props}, key) => {
+          // 识别是否 jsx 函数（箭头，匿名，调用）
+          // props.xxx === ()=> <div>123</div>
+          // props.xxx === <div>123</div>
+          // if (props.xxx) {
+          //       return <Render uiTree={uiItem.props.xxx} />
+          //   }
           return (
             <Wrapper key={id} id={id}>
-              {Comp(id)}
+              <UiComponent {...props} />
             </Wrapper>
           );
-        } else {
-          return <Render key={key} ids={id} />;
-        }
       })}
-        <AddComponent />
+      <AddComponent />
     </>
   );
 };

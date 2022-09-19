@@ -1,42 +1,45 @@
 import FormRender, { useForm } from '@/components/FormRender';
-import { currentSelect, idMap } from '@/store';
+import { currentSelect, idMap, UiItem, uiTree } from '@/store';
 import { propsTramsform } from '@/utils/propsTramsform';
 import { useCallback, useEffect } from 'react';
-import { selector, useRecoilState, useRecoilValue } from 'recoil';
+import { selector, useRecoilState } from 'recoil';
+import getVal from 'lodash.get';
+import setVal from 'lodash.set';
+import produce from 'immer';
 
 const currentSelectMapSeletor = selector({
   key: 'currentSelectMap',
-  get: ({ get }) => ({
-    currentMap: get(idMap)[get(currentSelect).id],
-    id: get(currentSelect).id,
-  }),
+  get: ({ get }) => {
+    return {
+      currentUiItem: getVal(get(uiTree), get(idMap)[get(currentSelect).id]) as UiItem,
+      id: get(currentSelect).id,
+    };
+  },
   set: ({ set, get }, newVal) => {
-    const map = get(idMap);
-    const id = get(currentSelect).id;
-    return set(idMap, {
-      ...map,
-      [id]: {
-        ...map[id],
-        props: newVal,
-      },
+    const uiTreepath = get(idMap)[get(currentSelect).id];
+    const uiTreeState = get(uiTree);
+    // 数组开头添加元素
+    const addedTodosArray = produce(uiTreeState, (draft) => {
+      setVal(draft, `${uiTreepath}.props`, newVal);
     });
+    return set(uiTree, addedTodosArray);
   },
 });
 
 const RightPanel = () => {
   const [form] = useForm();
-  const [{ currentMap, id }, setCurrentMap] = useRecoilState(currentSelectMapSeletor);
+  const [{ currentUiItem, id }, setcurrentUiItem] = useRecoilState(currentSelectMapSeletor);
 
   // 每次切换组件就需要清空
   useEffect(() => {
-    if (currentMap && currentMap.props) {
+    if (currentUiItem && currentUiItem.props) {
       form.resetFields();
-      form.setFieldsValue(currentMap.props);
+      form.setFieldsValue(currentUiItem.props);
     }
   }, [id]);
 
   const onValuesChange = useCallback((_: any, formValues: any) => {
-    setCurrentMap(formValues);
+    setcurrentUiItem(formValues);
   }, []);
 
   return (
@@ -45,11 +48,11 @@ const RightPanel = () => {
         {/* 属性 */}
       </div>
       <div className="p-5">
-        {currentMap?.component?.propsConfigArray && (
+        {currentUiItem?.UiComponent?.propsConfigArray && (
           <FormRender
             form={form}
             onValuesChange={onValuesChange}
-            fields={propsTramsform(currentMap.component.propsConfigArray)}
+            fields={propsTramsform(currentUiItem.UiComponent.propsConfigArray)}
           />
         )}
       </div>

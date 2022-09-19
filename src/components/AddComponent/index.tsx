@@ -2,8 +2,8 @@ import { Modal } from 'antd';
 import type { FC } from 'react';
 import { memo } from 'react';
 import { useBoolean } from 'ahooks';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { idMap, ids } from '@/store';
+import { useRecoilState } from 'recoil';
+import { idMap, ids, uiTree } from '@/store';
 import type { ComponentName } from '../Schema';
 import { componentsInstall } from '../Schema';
 
@@ -40,24 +40,25 @@ const components = {
 
 const AddComponent: FC<AddComponentProps> = () => {
   const [visible, { setTrue, setFalse }] = useBoolean();
-  const setIdsState = useSetRecoilState(ids);
+  const [uiTreeState, setUiTreeState] = useRecoilState(uiTree);
   const [idMapState, setIdMapState] = useRecoilState(idMap);
 
   const handleChange = (componentName: ComponentName) => () => {
     const id = Math.floor(Math.random() * 100000).toString(16);
-
-    setIdMapState({
-      ...idMapState,
-      [id]: {
-        component: componentsInstall[componentName],
+    const newUiTreeState = [
+      ...uiTreeState,
+      {
+        id,
+        UiComponent: componentsInstall[componentName],
         props: componentsInstall[componentName].propsConfigArray
           ? (componentsInstall[componentName].defaultProps as Record<string, any>)
           : {},
       },
-    });
-
-    setIdsState((preIds: any) => {
-      return [...preIds, id];
+    ];
+    setUiTreeState(newUiTreeState);
+    setIdMapState({
+      ...idMapState,
+      [id]: `[${newUiTreeState.length - 1}]`,
     });
     setFalse();
   };
