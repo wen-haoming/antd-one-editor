@@ -2,7 +2,7 @@ import AddComponent from '@/components/AddComponent';
 import Render from '@/components/Render';
 import Code from '@/components/Code';
 import { Mode, uiTree } from '@/store';
-import { ids, renderMode } from '@/store';
+import {  renderMode } from '@/store';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 const modeList: {

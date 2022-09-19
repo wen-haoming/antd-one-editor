@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { memo } from 'react';
 import { useBoolean } from 'ahooks';
 import { useRecoilState } from 'recoil';
-import { idMap, ids, uiTree } from '@/store';
+import { idMap, uiTree } from '@/store';
 import type { ComponentName } from '../Schema';
 import { componentsInstall } from '../Schema';
 

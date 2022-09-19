@@ -1,5 +1,6 @@
 import type { IdMap, UiTree } from "@/store"
 import { stringify } from "./stringify"
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 // 分析依赖
 export const getImports = (uiTree: UiTree) => {
@@ -49,14 +50,9 @@ const getPropsString = (props: Record<string, any>) => {
 const getJsx = (uiTree: UiTree) => {
   return uiTree.map((uiTreeItem) => {
     const { UiComponent, props } = uiTreeItem
-    const ele = UiComponent.importDeclaration.importDefault || UiComponent.importDeclaration.import
-    if (props.children) {
-      // aa={[]} aa={{}}  aa="" aa={<Comp></Comp>} aa={()=>{}}  aa={} aa
-      const filterChildren = { ...props }
-      Reflect.deleteProperty(filterChildren, 'children')
-      return `<${ele} ${getPropsString(filterChildren)} >${props.children}</${ele}>`
-    }
-    return `<${ele} ${getPropsString(props)} />`
+    const Ele = (UiComponent.importDeclaration.importDefault || UiComponent.importDeclaration.import )as any
+    return  reactElementToJSXString(<Ele {...props} /> )
+
   }).join('\n')
 }
 
