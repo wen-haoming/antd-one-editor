@@ -52,7 +52,6 @@ const getJsx = (uiTree: UiTree) => {
     const { UiComponent, props } = uiTreeItem
     const Ele = (UiComponent.importDeclaration.importDefault || UiComponent.importDeclaration.import )as any
     return  reactElementToJSXString(<Ele {...props} /> )
-
   }).join('\n')
 }
 

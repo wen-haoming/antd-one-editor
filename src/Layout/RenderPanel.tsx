@@ -23,7 +23,7 @@ const RenderPanel = () => {
   const uiTreeState = useRecoilValue(uiTree);
   
   return (
-    <div className="flex-1 bg-brand-grey p-t-0">
+    <div className="flex flex-col flex-1 bg-brand-grey p-t-0">
       <div className="flex h-8 w-full bg-white b-brand-grey border-l-1 border-r-1 justify-end items-center p-x2">
         {modeList.map((item) => {
           return (
@@ -39,7 +39,7 @@ const RenderPanel = () => {
           );
         })}
       </div>
-      <div className="flex bg-white h-full overflow-y-auto m-2 p-1 flex-col">
+      <div className="flex flex-col h-[calc(100vh-5rem)] bg-white overflow-y-auto m-2 p-1 flex-col">
           {currentMode === 'render' ? (
             <Render uiTree={uiTreeState} />
           ) : currentMode === 'code' ? (

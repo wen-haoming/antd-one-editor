@@ -25,16 +25,12 @@ export default defineConfig({
         'btn-block':
           'block py-1	 px-3	font-semibold rounded-md bg-brand-primary text-white cursor-pointer hover:bg-brand-hover text-center',
         'f-center': 'flex justify-center items-center',
-        // 'hover-outline':'hover:outline  hover:outline-red'
       },
       rules: [
         [
           'editor-hover',
           {
             outline: '1.5px dotted #2558fb',
-            // 'outline-width': "1px",
-            //   'outline-style':'dotted',
-            // outlineStyle:'dashed',
             'outline-offset': '1px',
           },
         ],
