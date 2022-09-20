@@ -6,10 +6,11 @@ import { useRecoilState } from 'recoil';
 interface ComponentProps {
   id: string;
   children: ReactNode;
+  inlineBlock?:boolean
 }
 
 const Wrapper: FC<ComponentProps> = (props) => {
-  const { id } = props;
+  const { id ,inlineBlock = false} = props;
   
   const [currentSelectState, setCurrentSelectState] = useRecoilState(currentSelect);
 
@@ -24,7 +25,7 @@ const Wrapper: FC<ComponentProps> = (props) => {
       onClick={handleClick}
       className={`hover:editor-hover z-10 m-b1 m-r1 ${
         id === currentSelectState.id && 'editor-hover'
-      }`}
+      } ${inlineBlock?'inline-block':'inline-block'}`}
     >
       {props.children}
     </div>

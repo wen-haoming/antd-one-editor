@@ -8,8 +8,7 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-import prettier from 'prettier/standalone'
-import parserBabel from "prettier/parser-babel";
+
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -35,8 +34,6 @@ const Code = () => {
   const monacoRef = useRef<any>();
 
   useEffect(() => {
-    console.log(prettier, 'prettier');
-
     if (!monacoRef.current) {
       monacoRef.current = monaco.editor.create(ref.current, {
         value: '',
@@ -49,11 +46,7 @@ const Code = () => {
 
   useEffect(() => {
     if (monacoRef.current) {
-      const val = prettier.format(parse(uiTreeState),{
-        parser: "babel",
-        plugins: [parserBabel],
-      });
-      monacoRef.current.setValue(val);
+      monacoRef.current.setValue(parse(uiTreeState));
     }
   }, [uiTreeState]);
 
