@@ -1,6 +1,5 @@
 import AntButton from './AntButton';
 import AntInput from './AntInput';
-import AntPageHeader from './AntPageHeader';
 import AntTabs from './AntTabs';
 import AntResult from './AntResult';
 import AntTable from './AntTable';
@@ -19,7 +18,6 @@ export type SFC<Props> = FC<Props> & {
 export const componentsInstall = {
   AntButton,
   AntInput,
-  AntPageHeader,
   AntTabs,
   AntResult,
   AntTable,

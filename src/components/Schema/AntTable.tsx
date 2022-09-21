@@ -49,7 +49,23 @@ AntTable.defaultProps = {
   ],
 }
 
-AntTable.propsConfigArray = []
+AntTable.propsConfigArray = [
+  {
+    valueType:'FormSwitch',
+    label:'是否展示外边框',
+    "name":'bordered'
+  },
+  {
+    valueType:'FormSelect',
+    label:'表格大小',
+    "name":'size',
+    valueEnum:{
+      default:'default',
+      middle:'middle',
+      small:'small'
+    }
+  },
+]
 
 
 export default AntTable;

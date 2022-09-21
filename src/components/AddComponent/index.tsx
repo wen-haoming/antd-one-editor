@@ -20,10 +20,6 @@ const components = {
       text: '输入框',
     },
     {
-      type: 'AntPageHeader',
-      text: '页头',
-    },
-    {
       type: 'AntResult',
       text: '结果页',
     },

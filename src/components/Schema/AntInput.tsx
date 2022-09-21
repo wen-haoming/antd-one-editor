@@ -12,7 +12,8 @@ const AntInput: SFC<AntInputProps> = (props) => {
 
 // 默认属性
 AntInput.defaultProps = {
-  
+  size:'middle',
+  showCount:false
 }
 
 // 依赖模块

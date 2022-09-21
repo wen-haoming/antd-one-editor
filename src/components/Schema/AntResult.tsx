@@ -3,19 +3,18 @@ import { Button } from 'antd';
 import { Result } from 'antd';
 import type { SFC } from '.';
 
-type AntResultProps = ResultProps
+type AntResultProps = ResultProps;
 
-const AntResult: SFC<AntResultProps>  = (props) => {
+const AntResult: SFC<AntResultProps> = (props) => {
   const {} = props;
 
   return <Result {...props} />;
 };
 
-
 AntResult.importDeclaration = {
-  source:'antd',
-  import:'Result'
-}
+  source: 'antd',
+  import: 'Result',
+};
 
 AntResult.defaultProps = {
   status: 'success',
@@ -28,11 +27,33 @@ AntResult.defaultProps = {
     </Button>,
     <Button key="buy">Buy Again</Button>,
   ],
-}
+};
 
 AntResult.propsConfigArray = [
-  
+  {
+    valueType: 'TextArea',
+    label: '标题',
+    name: 'title',
+  },
+  {
+    valueType: 'TextArea',
+    label: '小标题',
+    name: 'subTitle',
+  },
+  {
+    valueType: 'FormSelect',
+    label: '状态',
+    name: 'status',
+    valueEnum: {
+      403: '403',
+      404: '404',
+      500: '500',
+      error: 'error',
+      info: 'info',
+      success: 'success',
+      warning: 'warning',
+    },
+  },
 ];
-
 
 export default AntResult;
