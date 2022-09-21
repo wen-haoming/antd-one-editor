@@ -15,12 +15,13 @@ const AntButton: SFC<AntButtonProps>  = (props) => {
 AntButton.defaultProps = {
   children: '按钮',
   type: 'primary',
+  shape:'default'
 };
 
 // 依赖模块
 AntButton.importDeclaration = {
   source:'antd',
-  import:'Button'
+  import:'Button',  
 }
 
 // 配置属性
