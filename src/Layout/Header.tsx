@@ -1,5 +1,6 @@
 import { uiTree } from '@/store';
-import { createCode, parse } from '@/utils';
+import {  parse } from '@/utils';
+import { downloadProject } from '@/utils/download';
 import { useRecoilValue } from 'recoil';
 
 
@@ -15,7 +16,7 @@ const Header = () => {
           <div
             className="btn m-r1"
             onClick={() => {
-              createCode(parse(uiTreeState), 'index.tsx');
+              downloadProject(parse(uiTreeState))
             }}
           >
             出码

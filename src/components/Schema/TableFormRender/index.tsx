@@ -27,6 +27,7 @@ TableFormRender2.defaultProps = {
                 gender: '男',
                 age: id,
                 title: id,
+                address:id
               })),
           })
         },300)
@@ -112,7 +113,7 @@ TableFormRender2.propsConfigArray = [
     },
   },
   {
-    valueType: Columns,
+    valueType: Columns as React.FunctionComponent,
     label: 'columns',
     name: 'columns',
   },

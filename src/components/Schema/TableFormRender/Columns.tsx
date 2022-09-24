@@ -1,12 +1,14 @@
 import type { FC } from 'react';
+import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { useBoolean } from 'ahooks';
 import type { TableColumnProps } from 'antd';
-import { Button, Modal, Segmented, Space, Divider } from 'antd';
+import { Button, Modal, Segmented, Space, Divider, ConfigProvider } from 'antd';
 import type { TableFormRenderProps } from 'antd-one/es/Components/TableFormRender';
 import { FormRender } from 'antd-one';
 import { useForm } from 'antd-one/es/Components/FormRender';
 import produce from 'immer';
+import setVal from 'lodash.set';
 
 const Columns: FC<{
   value: TableFormRenderProps['columns'] & TableColumnProps<any>[];
@@ -21,9 +23,29 @@ const Columns: FC<{
   const [currentVal, setCurrentVal] = useState<string | number>('');
   const [form] = useForm();
 
+  const segmentedChange = useCallback(
+    (val: string | number) => {
+      setCurrentVal(val);
+      const targetForm = value.find((item: any) => item.dataIndex === val) as any;
+      if (targetForm) {
+        console.log(targetForm);
+        form.setFieldsValue({
+          title: targetForm.title,
+          dataIndex: targetForm.dataIndex,
+          searchField: !!targetForm.searchField,
+          ['searchField.props.name']: targetForm?.searchField?.props?.name,
+          ['searchField.type']: targetForm?.searchField?.type,
+          ['searchField.props.label']: targetForm?.searchField?.props?.label,
+        });
+      }
+    },
+    [value, form],
+  );
+
   useEffect(() => {
     if (vis && value && value[0]) {
       setCurrentVal(value[0].dataIndex as string);
+      segmentedChange(value[0].dataIndex as string);
     }
   }, [vis, value]);
 
@@ -34,7 +56,7 @@ const Columns: FC<{
       </Button>
       <Modal
         title={'column配置'}
-        width={400}
+        width={550}
         open={vis}
         onOk={() => {
           onChange(draftValue);
@@ -51,51 +73,99 @@ const Columns: FC<{
                 value: item.dataIndex as string,
               };
             })}
-            onChange={(val) => {
-              setCurrentVal(val);
-              const targetForm = value.find(
-                (item: any) => item.dataIndex === val,
-              ) as TableFormRenderProps['columns'][0];
-              if (targetForm) {
-                form.setFieldsValue({
-                  title: targetForm.title,
-                  searchField: !!targetForm.searchField,
-                });
-              }
-            }}
+            onChange={segmentedChange}
           />
           <div className="btn">+</div>
         </Space>
         <div className="w-xs mt">
-          <FormRender
-            form={form}
-            onValuesChange={(_, values) => {
-              console.log(value, values, currentVal, '==');
-              const darft = produce(value, (val: any) => {
-                const idx = val.findIndex(
-                  (item: any) => item.dataIndex === currentVal,
-                ) as number;
-                val[idx].title = values.title;
-              });
-              setDraftValue(darft);
-            }}
-            fields={[
-              {
-                type: 'FormInput',
-                props: {
-                  name: 'title',
-                  label: 'title',
+          <ConfigProvider componentSize="small">
+            <FormRender
+              form={form}
+              onValuesChange={(_, values) => {
+                const darft = produce(value, (val: any) => {
+                  const idx = val.findIndex((item: any) => item.dataIndex === currentVal) as number;
+                  Object.entries(values).forEach(([k, v]) => {
+                    setVal(val[idx], k, v);
+                  });
+                });
+                setDraftValue(darft);
+              }}
+              fields={[
+                {
+                  render: <Divider plain>columns配置</Divider>,
                 },
-              },
-              {
-                type: 'Switch' as any,
-                props: {
-                  name: 'searchField',
-                  label: '是否支持表单搜索？',
+                {
+                  type: 'FormInput',
+                  props: {
+                    name: 'title',
+                    label: 'title',
+                    rules: [{ required: true }],
+                  },
                 },
-              },
-            ]}
-          />
+                {
+                  type: 'FormInput',
+                  props: {
+                    name: 'dataIndex',
+                    label: 'dataIndex',
+                    rules: [{ required: true }],
+                  },
+                },
+                {
+                  type: 'Switch' as any,
+                  props: {
+                    name: 'searchField',
+                    label: '表单搜索？',
+                  },
+                },
+                (formData) => {
+                  return {
+                    type: formData.searchField && (() => <Divider plain>搜索配置</Divider>),
+                    props: {
+                      noStyle: true,
+                    },
+                  };
+                },
+                (formData) => {
+                  return {
+                    type: formData.searchField && 'FormInput',
+                    props: {
+                      name: 'searchField.props.label',
+                      label: 'label名称',
+                      rules: [{ required: true }],
+                    },
+                  };
+                },
+                (formData) => {
+                  return {
+                    type: formData.searchField && 'FormInput',
+                    props: {
+                      name: 'searchField.props.name',
+                      label: 'name',
+                      rules: [{ required: true }],
+                    },
+                  };
+                },
+                (formData) => {
+                  return {
+                    type: formData.searchField && 'FormSelect',
+                    props: {
+                      name: 'searchField.type',
+                      label: '搜索类型控件',
+                      fieldProps: {
+                        rules: [{ required: true }],
+                        valueEnum: {
+                          FormInput: '输入框',
+                          DateTimeRangePicker: '日期选择',
+                          FormSelect: '选择框',
+                          Switch: '按钮开关',
+                        },
+                      },
+                    },
+                  };
+                },
+              ]}
+            />
+          </ConfigProvider>
         </div>
       </Modal>
     </>

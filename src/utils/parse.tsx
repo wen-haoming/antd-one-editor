@@ -58,33 +58,21 @@ const getJsx = (uiTree: UiTree) => {
       const { UiComponent, props } = uiTreeItem;
       const Ele = (UiComponent.importDeclaration.importDefault ||
         UiComponent.importDeclaration.import) as any;
-        
-      return reactElementToJSXString(<Ele {...props} />,{
-        showFunctions:true,
-        functionValue:(fn)=>{
-          if(fn.name === 'request'){
-            return (async ()=>{
-              return new Promise((r)=>{
-                  window.setTimeout(()=>{
-                    r({
-                      total: '1000',
-                      list: Array('1000')
-                        .fill('')
-                        .map((item, id) => ({
-                          key: id,
-                          name: id,
-                          gender: '男',
-                          age: id,
-                          title: id,
-                        })),
-                    })
-                  },300)
-              })
-            })
-          }else{
-            return ()=>{}
+
+      return reactElementToJSXString(<Ele {...props} />, {
+        showFunctions: true,
+        functionValue: (fn) => {
+          if (fn.name === 'request') {
+            return () => {
+              return {
+                total: 'totalNumber',
+                list: [],
+              };
+            };
+          } else {
+            return () => {};
           }
-        }
+        },
       });
     })
     .join('\n');
@@ -93,14 +81,14 @@ const getJsx = (uiTree: UiTree) => {
 export const parse = (uiTree: UiTree) => {
   const str = `${getImports(uiTree)}
 
-  const Pages = () => {
+  const Page = () => {
 
     return <>
         ${getJsx(uiTree)}
     </>
   }
 
-  export default Pages
+  export default Page
   `;
   return prettier.format(str, {
     parser: 'babel',
