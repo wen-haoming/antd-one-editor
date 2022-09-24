@@ -32,25 +32,25 @@ export const getImports = (uiTree: UiTree) => {
     .join(`\n`);
 };
 
-const getPropsString = (props: Record<string, any>) => {
-  return Object.entries(props)
-    .map(([propsKey, propsValue]) => {
-      if (typeof propsValue === 'string') {
-        // 字符串
-        return `${propsKey}='${propsValue}'`;
-      } else if (typeof propsValue === 'boolean' || typeof propsValue === 'number') {
-        // 布尔值
-        return `${propsKey}={${propsValue}}`;
-      } else if (Array.isArray(propsValue)) {
-        // 数组
-        return `${propsKey}={${stringify(propsValue)}}`;
-      } else if (!Array.isArray(propsValue) && typeof propsValue === 'object') {
-        // 对象
-        return `${propsKey}={${stringify(propsValue)}}`;
-      }
-    })
-    .join(' ');
-};
+// const getPropsString = (props: Record<string, any>) => {
+//   return Object.entries(props)
+//     .map(([propsKey, propsValue]) => {
+//       if (typeof propsValue === 'string') {
+//         // 字符串
+//         return `${propsKey}='${propsValue}'`;
+//       } else if (typeof propsValue === 'boolean' || typeof propsValue === 'number') {
+//         // 布尔值
+//         return `${propsKey}={${propsValue}}`;
+//       } else if (Array.isArray(propsValue)) {
+//         // 数组
+//         return `${propsKey}={${stringify(propsValue)}}`;
+//       } else if (!Array.isArray(propsValue) && typeof propsValue === 'object') {
+//         // 对象
+//         return `${propsKey}={${stringify(propsValue)}}`;
+//       }
+//     })
+//     .join(' ');
+// };
 
 const getJsx = (uiTree: UiTree) => {
   return uiTree
@@ -58,7 +58,34 @@ const getJsx = (uiTree: UiTree) => {
       const { UiComponent, props } = uiTreeItem;
       const Ele = (UiComponent.importDeclaration.importDefault ||
         UiComponent.importDeclaration.import) as any;
-      return reactElementToJSXString(<Ele {...props} />);
+        
+      return reactElementToJSXString(<Ele {...props} />,{
+        showFunctions:true,
+        functionValue:(fn)=>{
+          if(fn.name === 'request'){
+            return (async ()=>{
+              return new Promise((r)=>{
+                  window.setTimeout(()=>{
+                    r({
+                      total: '1000',
+                      list: Array('1000')
+                        .fill('')
+                        .map((item, id) => ({
+                          key: id,
+                          name: id,
+                          gender: '男',
+                          age: id,
+                          title: id,
+                        })),
+                    })
+                  },300)
+              })
+            })
+          }else{
+            return ()=>{}
+          }
+        }
+      });
     })
     .join('\n');
 };

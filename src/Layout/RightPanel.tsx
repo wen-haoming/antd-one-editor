@@ -1,5 +1,6 @@
 import FormRender, { useForm } from '@/components/FormRender';
-import { currentSelect, idMap, UiItem, uiTree } from '@/store';
+import type { UiItem} from '@/store';
+import { currentSelect, idMap, uiTree } from '@/store';
 import { propsTramsform } from '@/utils/propsTramsform';
 import { useCallback, useEffect } from 'react';
 import { selector, useRecoilState } from 'recoil';
@@ -39,7 +40,13 @@ const RightPanel = () => {
   }, [id]);
 
   const onValuesChange = useCallback((_: any, formValues: any) => {
-    setcurrentUiItem(formValues);
+    const handleFormValues: any = {} ;
+    // 如果有多对象多重嵌套，需要进行处理
+    Object.entries(formValues).forEach(([key,value])=>{
+      setVal(handleFormValues,key,value)
+    })  
+    setcurrentUiItem(handleFormValues);
+
   }, []);
 
   return (

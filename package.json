@@ -19,8 +19,9 @@
     "@babel/types": "^7.19.0",
     "ahooks": "^3.7.0",
     "antd": "^4.17.2",
-    "antd-one": "^0.1.16",
+    "antd-one": "^0.1.22",
     "immer": "^9.0.15",
+    "lodash.clone": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "monaco-editor": "^0.34.0",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.1.105",
+    "@types/lodash.clone": "^4.5.7",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.set": "^4.3.7",
     "@types/prettier": "^2.7.0",

@@ -10,6 +10,7 @@ export type PropsConfigArray = {
 
 export const propsTramsform = (propsArray: PropsConfigArray) => {
   return propsArray.map((item) => {
+
     const field: Field  = {
       type: item.valueType,
       props: {
@@ -22,7 +23,6 @@ export const propsTramsform = (propsArray: PropsConfigArray) => {
         valueEnum: item.valueEnum,
       };
     }
-
     return field;
   });
 };
