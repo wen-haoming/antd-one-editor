@@ -23,10 +23,10 @@ const components = {
       type: 'AntResult',
       text: '结果页',
     },
-    {
-      type: 'AntTable',
-      text: '列表',
-    },
+    // {
+    //   type: 'AntTable',
+    //   text: '列表',
+    // },
     {
       type: 'AntTabs',
       text: '标签页',
@@ -88,7 +88,7 @@ const AddComponent: FC<AddComponentProps> = () => {
           </div>
           <span className="">表单组件</span>
           <div className="p-2 grid grid-cols-3 gap-4">
-            <div className="compBtn" onClick={handleChange('AntInput')}>
+            <div className="compBtn" onClick={handleChange('TableFormRender')}>
               查询表单
             </div>
             <div className="compBtn" onClick={handleChange('AntInput')}>

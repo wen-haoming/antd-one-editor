@@ -2,7 +2,7 @@ import AntButton from './AntButton';
 import AntInput from './AntInput';
 import AntTabs from './AntTabs';
 import AntResult from './AntResult';
-import AntTable from './AntTable';
+import TableFormRender from './TableFormRender';
 import type { FC } from 'react';
 import type { PropsConfigArray } from '@/utils/propsTramsform';
 
@@ -20,7 +20,7 @@ export const componentsInstall = {
   AntInput,
   AntTabs,
   AntResult,
-  AntTable,
+  TableFormRender,
 };
 
 export type ComponentName = keyof typeof componentsInstall;

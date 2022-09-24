@@ -19,6 +19,7 @@
     "@babel/types": "^7.19.0",
     "ahooks": "^3.7.0",
     "antd": "^4.17.2",
+    "antd-one": "^0.1.16",
     "immer": "^9.0.15",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
@@ -26,7 +27,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
-    "react-monaco-editor": "^0.50.1",
     "recoil": "^0.7.5",
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-plugin-rewrite-all": "^1.0.0"
