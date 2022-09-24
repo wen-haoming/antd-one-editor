@@ -27,9 +27,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
-    "recoil": "^0.7.5",
-    "vite-plugin-monaco-editor": "^1.1.0",
-    "vite-plugin-rewrite-all": "^1.0.0"
+    "recoil": "^0.7.5"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.105",
