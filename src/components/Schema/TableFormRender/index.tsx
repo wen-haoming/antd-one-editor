@@ -68,7 +68,7 @@ TableFormRender2.propsConfigArray = [
     },
   },
   {
-    valueType: ({ value, onChange }) => {
+    valueType: () => {
       const [vis, { setTrue, setFalse }] = useBoolean();
       return (
         <>
