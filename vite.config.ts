@@ -8,7 +8,7 @@ import presetIcons from '@unocss/preset-icons';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/antd-one-editor/',
+  // base: '/antd-one-editor/',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
