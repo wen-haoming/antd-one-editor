@@ -27,7 +27,10 @@ const Render: FC<RenderProps> = (props) => {
           <Wrapper
             key={id}
             id={id}
-            inlineBlock={inlineBlock.includes(UiComponent.importDeclaration.import || UiComponent.importDeclaration.importDefault as string)}
+            inlineBlock={inlineBlock.includes(
+              UiComponent.importDeclaration.import ||
+                (UiComponent.importDeclaration.importDefault as string),
+            )}
           >
             <UiComponent {...props} />
           </Wrapper>

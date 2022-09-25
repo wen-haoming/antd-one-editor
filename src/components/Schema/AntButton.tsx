@@ -5,7 +5,7 @@ import type { SFC } from '.';
 
 type AntButtonProps = ButtonProps;
 
-const AntButton: SFC<AntButtonProps>  = (props) => {
+const AntButton: SFC<AntButtonProps> = (props) => {
   const {} = props;
 
   return <Button {...props} />;
@@ -15,14 +15,14 @@ const AntButton: SFC<AntButtonProps>  = (props) => {
 AntButton.defaultProps = {
   children: '按钮',
   type: 'primary',
-  shape:'default'
+  shape: 'default',
 };
 
 // 依赖模块
 AntButton.importDeclaration = {
-  source:'antd',
-  import:'Button',  
-}
+  source: 'antd',
+  import: 'Button',
+};
 
 // 配置属性
 AntButton.propsConfigArray = [

@@ -2,7 +2,7 @@ import type { ListProps } from 'antd';
 import { List } from 'antd';
 import type { FC } from 'react';
 
-type AntListProps = ListProps<any>
+type AntListProps = ListProps<any>;
 
 const AntList: FC<AntListProps> = (props) => {
   const {} = props;
@@ -10,8 +10,6 @@ const AntList: FC<AntListProps> = (props) => {
   return <List {...props} />;
 };
 
-AntList.defaultProps = {
-  
-}
+AntList.defaultProps = {};
 
 export default AntList;

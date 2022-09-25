@@ -2,7 +2,7 @@ import AddComponent from '@/components/AddComponent';
 import Render from '@/components/Render';
 import Code from '@/components/Code';
 import { Mode, uiTree } from '@/store';
-import {  renderMode } from '@/store';
+import { renderMode } from '@/store';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 const modeList: {
@@ -21,7 +21,7 @@ const modeList: {
 const RenderPanel = () => {
   const [currentMode, setCurrentMode] = useRecoilState(renderMode);
   const uiTreeState = useRecoilValue(uiTree);
-  
+
   return (
     <div className="flex flex-col flex-1 bg-brand-grey p-t-0">
       <div className="flex h-8 w-full bg-white b-brand-grey border-l-1 border-r-1 justify-end items-center p-x2">
@@ -40,13 +40,13 @@ const RenderPanel = () => {
         })}
       </div>
       <div className="flex flex-col h-[calc(100vh-5rem)] bg-white overflow-y-auto m-2 p-1 flex-col">
-          {currentMode === 'render' ? (
-            <Render uiTree={uiTreeState} />
-          ) : currentMode === 'code' ? (
-            <Code />
-          ) : (
-            ''
-          )}
+        {currentMode === 'render' ? (
+          <Render uiTree={uiTreeState} />
+        ) : currentMode === 'code' ? (
+          <Code />
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

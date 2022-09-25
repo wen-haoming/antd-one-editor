@@ -9,7 +9,7 @@ export type PropsConfigArray = {
 
 export const propsTramsform = (propsArray: PropsConfigArray) => {
   return propsArray.map((item) => {
-    const field: Field  = {
+    const field: Field = {
       type: item.valueType,
       props: {
         name: item.name,

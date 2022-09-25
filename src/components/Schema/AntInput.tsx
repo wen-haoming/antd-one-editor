@@ -12,15 +12,15 @@ const AntInput: SFC<AntInputProps> = (props) => {
 
 // 默认属性
 AntInput.defaultProps = {
-  size:'middle',
-  showCount:false
-}
+  size: 'middle',
+  showCount: false,
+};
 
 // 依赖模块
 AntInput.importDeclaration = {
-  source:'antd',
-  import:'Input'
-}
+  source: 'antd',
+  import: 'Input',
+};
 
 // 配置属性
 AntInput.propsConfigArray = [
@@ -39,6 +39,6 @@ AntInput.propsConfigArray = [
       small: '小',
     },
   },
-];;
+];
 
 export default AntInput;

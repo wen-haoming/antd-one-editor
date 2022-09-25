@@ -1,8 +1,9 @@
 import type { IdMap, UiTree } from '@/store';
-import { stringify } from './stringify';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+import babel from 'babel';
 import prettier from 'prettier/standalone';
 import parserBabel from 'prettier/parser-babel';
+
 // 分析依赖
 export const getImports = (uiTree: UiTree) => {
   const importMap = uiTree.reduce<Record<string, string | string[]>>((pre, uiTreeItem) => {

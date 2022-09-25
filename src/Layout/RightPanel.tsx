@@ -1,5 +1,5 @@
-import FormRender, { useForm } from '@/components/FormRender';
-import type { UiItem} from '@/store';
+import { FormRender } from 'antd-one';
+import type { UiItem } from '@/store';
 import { currentSelect, idMap, uiTree } from '@/store';
 import { propsTramsform } from '@/utils/propsTramsform';
 import { useCallback, useEffect } from 'react';
@@ -28,7 +28,7 @@ const currentSelectMapSeletor = selector({
 });
 
 const RightPanel = () => {
-  const [form] = useForm();
+  const [form] = FormRender.useForm();
   const [{ currentUiItem, id }, setcurrentUiItem] = useRecoilState(currentSelectMapSeletor);
 
   // 每次切换组件就需要清空
@@ -40,13 +40,12 @@ const RightPanel = () => {
   }, [id]);
 
   const onValuesChange = useCallback((_: any, formValues: any) => {
-    const handleFormValues: any = {} ;
+    const handleFormValues: any = {};
     // 如果有多对象多重嵌套，需要进行处理
-    Object.entries(formValues).forEach(([key,value])=>{
-      setVal(handleFormValues,key,value)
-    })  
+    Object.entries(formValues).forEach(([key, value]) => {
+      setVal(handleFormValues, key, value);
+    });
     setcurrentUiItem(handleFormValues);
-
   }, []);
 
   return (

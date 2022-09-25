@@ -6,6 +6,6 @@ export const currentSelect = atom<{
 }>({
   key: 'currentSelect',
   default: {
-    id:''
+    id: '',
   },
 });
