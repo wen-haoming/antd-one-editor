@@ -34,7 +34,7 @@ const components = {
   ],
 };
 
-const AddComponent: FC<AddComponentProps> = () => {
+export const AddComponent: FC<AddComponentProps> = () => {
   const [visible, { setTrue, setFalse }] = useBoolean();
   const [uiTreeState, setUiTreeState] = useRecoilState(uiTree);
   const [idMapState, setIdMapState] = useRecoilState(idMap);

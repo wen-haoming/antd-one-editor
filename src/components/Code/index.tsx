@@ -27,7 +27,7 @@ self.MonacoEnvironment = {
   },
 };
 
-const Code = () => {
+export const Code = () => {
   const uiTreeState = useRecoilValue(uiTree);
   const ref = useRef<any>();
   const monacoRef = useRef<any>();

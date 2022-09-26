@@ -19,7 +19,7 @@ export default defineConfig({
     Unocss({
       presets: [presetIcons(), presetWind()],
       shortcuts: {
-        btn: 'inline-block py-.5	 px-2 font-semibold rounded bg-brand-primary text-white cursor-pointer hover:bg-brand-hover text-center',
+        btn: 'inline-flex py-.5 px-2 font-semibold rounded bg-brand-primary text-white cursor-pointer hover:bg-brand-hover justify-center items-center',
         compBtn:
           'inline-block py-3	 px-3	text-brand-primary font-semibold rounded-md text-brand-txt  cursor-pointer hover:bg-brand-line hover:text-brand-primary text-left',
         'btn-block':

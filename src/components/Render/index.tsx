@@ -2,6 +2,7 @@ import type { UiTree } from '@/store';
 import type { FC } from 'react';
 import AddComponent from '../AddComponent';
 import Wrapper from '../Schema/Wrapper';
+import {ConfigProvider} from 'antd'
 
 export interface RenderProps {
   uiTree: UiTree;
@@ -9,11 +10,11 @@ export interface RenderProps {
 
 const inlineBlock = ['Button'];
 
-const Render: FC<RenderProps> = (props) => {
+export const Render: FC<RenderProps> = (props) => {
   const { uiTree } = props;
 
   return (
-    <>
+    <ConfigProvider >
       {uiTree.map(({ id, UiComponent, props }, key) => {
         // 识别是否 jsx 函数（箭头，匿名，调用）
         // props.xxx === ()=> <div>123</div>
@@ -35,7 +36,7 @@ const Render: FC<RenderProps> = (props) => {
         );
       })}
       <AddComponent />
-    </>
+    </ConfigProvider>
   );
 };
 
