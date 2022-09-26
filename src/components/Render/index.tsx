@@ -1,7 +1,5 @@
-import { UiTree, uiTree } from '@/store';
+import type { UiTree } from '@/store';
 import type { FC } from 'react';
-import { useCallback } from 'react';
-import { useRecoilValue } from 'recoil';
 import AddComponent from '../AddComponent';
 import Wrapper from '../Schema/Wrapper';
 

@@ -1,6 +1,6 @@
 import type { SFC } from '..';
 import { TableFormRender } from 'antd-one';
-import type { TableFormRenderProps } from 'antd-one/es/Components/TableFormRender';
+import type { TableFormRenderProps } from 'antd-one';
 import Columns from './Columns';
 
 const TableFormRender2: SFC<TableFormRenderProps> = (props) => {

@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { useBoolean } from 'ahooks';
 import type { TableColumnProps } from 'antd';
 import { Button, Modal, Segmented, Space, Divider, ConfigProvider } from 'antd';
-import type { TableFormRenderProps } from 'antd-one/es/Components/TableFormRender';
+import type { TableFormRenderProps } from 'antd-one';
 import { FormRender } from 'antd-one';
-import { useForm } from 'antd-one/es/Components/FormRender';
 import produce from 'immer';
 import setVal from 'lodash.set';
 
@@ -15,20 +14,19 @@ const Columns: FC<{
   onChange: (p: TableFormRenderProps['columns']) => void;
 }> = (props) => {
   const { value, onChange } = props;
-
   const [vis, { setTrue, setFalse }] = useBoolean();
   const [draftValue, setDraftValue] = useState<
     TableFormRenderProps['columns'] & TableColumnProps<any>[]
   >([]);
   const [currentVal, setCurrentVal] = useState<string | number>('');
-  const [form] = useForm();
+  const [form] = FormRender.useForm();
 
   const segmentedChange = useCallback(
-    (val: string | number) => {
+    async (val: string | number) => {
+        await form.validateFields();
       setCurrentVal(val);
       const targetForm = value.find((item: any) => item.dataIndex === val) as any;
       if (targetForm) {
-        console.log(targetForm);
         form.setFieldsValue({
           title: targetForm.title,
           dataIndex: targetForm.dataIndex,
