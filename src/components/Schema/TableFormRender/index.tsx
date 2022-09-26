@@ -97,7 +97,7 @@ TableFormRender2.defaultProps = {
 
 TableFormRender2.propsConfigArray = [
   {
-    valueType: 'FormSwitch',
+    valueType: 'Switch',
     label: '是否展示外边框',
     name: 'tableProps.bordered',
   },

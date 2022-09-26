@@ -25,7 +25,7 @@ AntInput.importDeclaration = {
 // 配置属性
 AntInput.propsConfigArray = [
   {
-    valueType: 'FormSwitch',
+    valueType: 'Switch',
     label: '是否展示字数',
     name: 'showCount',
   },
