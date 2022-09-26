@@ -1,4 +1,5 @@
-import type { Field } from '@/components/FormRender/types';
+import {  Field} from "antd-one/es/Components/FormRender/types";
+
 export type PropsConfigArray = {
   valueType: Field['type'];
   label: string;
