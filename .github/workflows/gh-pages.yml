@@ -26,23 +26,25 @@ jobs:
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-        with:
-          # 来源仓库
-          source-repo: 'git@github.com:wen-haoming/antd-one-editor.git'
-          # 目标仓库
-          destination-repo: 'git@gitee.com:haomingla/antd-one-editor.git'
-      - name: Build Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          # 注意替换为你的 Gitee 用户名
-          gitee-username: 浩明
-          # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
-          gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
-          gitee-repo:  haomingla/antd-one-editor
-          # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
-          branch: gh-pages
+
+
+      # - name: Sync to Gitee
+      #   uses: wearerequired/git-mirror-action@master
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+      #   with:
+      #     # 来源仓库
+      #     source-repo: 'git@github.com:wen-haoming/antd-one-editor.git'
+      #     # 目标仓库
+      #     destination-repo: 'git@gitee.com:haomingla/antd-one-editor.git'
+      # - name: Build Gitee Pages
+      #   uses: yanglbme/gitee-pages-action@main
+      #   with:
+      #     # 注意替换为你的 Gitee 用户名
+      #     gitee-username: 浩明
+      #     # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
+      #     gitee-password: ${{ secrets.GITEE_PASSWORD }}
+      #     # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
+      #     gitee-repo:  haomingla/antd-one-editor
+      #     # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
+      #     branch: gh-pages
