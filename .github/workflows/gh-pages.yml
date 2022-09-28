@@ -34,7 +34,7 @@ jobs:
           # 来源仓库
           source-repo: 'git@github.com:wen-haoming/antd-one-editor.git'
           # 目标仓库
-          destination-repo: 'git@gitee.com:wen-haoming/antd-one-editor.git'
+          destination-repo: 'git@gitee.com:浩明/antd-one-editor.git'
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@main
         with:
